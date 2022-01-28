@@ -8,7 +8,7 @@
 ### Design hypothesis
 - RTS-style strategy game set in space
 - Heavy focus on dialogue
-- [Stellaris](stellaris.com)-like interface, but with less tension and more whimsicality
+- [Stellaris](https://stellaris.com)-like interface, but with less tension and more whimsicality
    - Procedurally-generated planets and narratives *(this may not be feasible within the timeframe)*
 - Story focuses on the player as a shopkeeper, watching the collapse of an inter-galactic empire through sales and conversations
    - Map slowly goes dark over the course of the game
