@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class SpaceSpawner : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class SpaceSpawner : MonoBehaviour
     public int planetCount = 10;
 
     private GameObject starObject, planetObject;
+    [HideInInspector]
+    public List<GameObject> stars, planets;
 
     private void Start()
     {
@@ -45,28 +48,44 @@ public class SpaceSpawner : MonoBehaviour
             if (count == smallStarCount)
             {
                 tempIndex = 2;
-            }
-            else if (count == midStarCount)
-            {
-                tempIndex = Random.Range(0, 2);
-            }
-            else if (count == bigStarCount)
-            {
-                tempIndex = Random.Range(3, 5);
-            }
 
-            createStar(tempPosition, size, tempIndex);
+                createStar(tempPosition, size, tempIndex, true);
+            }
+            else
+            {
+                if (count == midStarCount)
+                {
+                    tempIndex = Random.Range(0, 2);
+                }
+                else if (count == bigStarCount)
+                {
+                    tempIndex = Random.Range(3, 5);
+                }
+
+                createStar(tempPosition, size, tempIndex, false);
+            } 
         }
     }
 
-    private void createStar(Vector3 starPosition, float starSize, int colourIndex)
+    private void createStar(Vector3 starPosition, float starSize, int colourIndex, bool isBloomDisabled)
     {
         GameObject newStar = Instantiate(starObject, transform);
         newStar.transform.localPosition = starPosition;
         newStar.transform.localScale = Vector3.one * starSize;
 
-        newStar.GetComponent<MeshRenderer>().material = starColours[colourIndex];
         newStar.GetComponent<Light>().intensity = 2 * starSize;
+
+        if (isBloomDisabled)
+        {
+            newStar.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Star_Small");
+            Destroy(newStar.GetComponent<PostProcessVolume>());
+        }
+        else
+        {
+            newStar.GetComponent<MeshRenderer>().material = starColours[colourIndex];
+        }
+
+        stars.Add(newStar);
     }
 
     private void createPlanetBatch(int count)
@@ -79,6 +98,10 @@ public class SpaceSpawner : MonoBehaviour
             newPlanet.transform.localPosition = tempPosition;
 
             newPlanet.GetComponent<MeshRenderer>().material = planetColours[Random.Range(0, planetColours.Length)];
+
+            planets.Add(newPlanet);
         }
+
+        GetComponent<GameController>().loadHome();
     }
 }
