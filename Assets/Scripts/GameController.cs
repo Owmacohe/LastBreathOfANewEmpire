@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public TextAsset conversationsFile;
     [Header("UI")]
     public TMP_Text creditsText;
     public TMP_Text rationsText;
@@ -14,16 +14,19 @@ public class GameController : MonoBehaviour
     public TMP_Text playerNameText;
     public GameObject playerDialogue;
     public TMP_Text NPCNameText;
+    public Image NPCPortrait;
     public TMP_Text NPCDialogueText;
 
-    private struct convo
+    private TextAsset[] conversationFiles;
+    private struct convoNode
     {
+        public string state;
         public string NPCDialogue;
         public List<string> responses;
         public int[,] inventoryChanges;
     }
-    private List<convo> conversations;
-    private int conversationNum;
+    private List<List<convoNode>> conversations;
+    private int conversationNum, conversationNodeNum;
 
     private int credits, rations, ammo;
     private float ores;
@@ -65,6 +68,7 @@ public class GameController : MonoBehaviour
         "ia",
         "othor"
     };
+    private Sprite[] portraits;
 
     private void Start()
     {
@@ -74,44 +78,53 @@ public class GameController : MonoBehaviour
         ores = 400;
 
         starshipObject = Resources.Load<GameObject>("Starship");
+        portraits = Resources.LoadAll<Sprite>("Portraits");
 
         playerUI = GameObject.FindGameObjectWithTag("Player");
         playerUI.SetActive(false);
         NPCUI = GameObject.FindGameObjectWithTag("NPC");
         NPCUI.SetActive(false);
 
-        conversations = new List<convo>();
-        string[] split = conversationsFile.text.Split('\n');
+        conversationFiles = Resources.LoadAll<TextAsset>("Conversations");
+        conversations = new List<List<convoNode>>();
 
-        for (int i = 0; i < split.Length; i++)
+        for (int f = 0; f < conversationFiles.Length; f++)
         {
-            if (split[i].Trim().Equals("---"))
+            conversations.Add(new List<convoNode>());
+            string[] split = conversationFiles[f].text.Split('\n');
+
+            for (int i = 0; i < split.Length; i++)
             {
-                convo newConvo;
-                newConvo.NPCDialogue = split[i + 1];
-                newConvo.responses = new List<string>();
-
-                int j = i + 2;
-                while (!split[j].Trim().Equals("===")) {
-                    newConvo.responses.Add(split[j]);
-                    j++;
-                }
-
-                j++;
-
-                newConvo.inventoryChanges = new int[3, 4];
-
-                for (int k = 0; k < 3; k++)
+                if (split[i].Trim().Equals("---"))
                 {
-                    string[] tempSplit = split[j + k].Split(' ');
+                    convoNode newNode;
+                    newNode.state = split[i + 1];
+                    newNode.NPCDialogue = split[i + 2];
+                    newNode.responses = new List<string>();
 
-                    for (int l = 0; l < 4; l++)
+                    int j = i + 3;
+                    while (!split[j].Trim().Equals("==="))
                     {
-                        newConvo.inventoryChanges[k, l] = int.Parse(tempSplit[l]);
+                        newNode.responses.Add(split[j]);
+                        j++;
                     }
-                }
 
-                conversations.Add(newConvo);
+                    j++;
+
+                    newNode.inventoryChanges = new int[3, 4];
+
+                    for (int k = 0; k < 3; k++)
+                    {
+                        string[] tempSplit = split[j + k].Split(' ');
+
+                        for (int l = 0; l < 4; l++)
+                        {
+                            newNode.inventoryChanges[k, l] = int.Parse(tempSplit[l]);
+                        }
+                    }
+
+                    conversations[f].Add(newNode);
+                }
             }
         }
 
@@ -163,28 +176,50 @@ public class GameController : MonoBehaviour
 
     public void startCoversation()
     {
+        isOpen = false;
+        conversationNum = Random.Range(0, conversations.Count);
+        conversationNodeNum = 0;
+
         playerUI.SetActive(true);
         playerNameText.text = playerName;
         NPCUI.SetActive(true);
         NPCNameText.text = NPCNamePrefixes[Random.Range(0, NPCNamePrefixes.Length)] + NPCNameSuffixes[Random.Range(0, NPCNameSuffixes.Length)];
+        NPCPortrait.sprite = portraits[Random.Range(0, portraits.Length)];
 
-        NPCDialogueText.text = conversations[conversationNum].NPCDialogue;
-        GameObject choiceObject = Resources.Load<GameObject>("Choice");
+        loadChoices();
+    }
 
-        for (int i = 0; i < conversations[conversationNum].responses.Count; i++)
-        {
-            GameObject tempChoice = Instantiate(choiceObject, playerDialogue.transform);
-            tempChoice.GetComponentInChildren<TMP_Text>().text = conversations[conversationNum].responses[i];
-        }
-
-        credits += conversations[conversationNum].inventoryChanges[0, 0];
-        rations += conversations[conversationNum].inventoryChanges[0, 1];
-        ammo += conversations[conversationNum].inventoryChanges[0, 2];
-        ores += conversations[conversationNum].inventoryChanges[0, 3];
+    public void makeChoice(int choiceNum)
+    {
+        credits += conversations[conversationNum][conversationNodeNum].inventoryChanges[choiceNum, 0];
+        rations += conversations[conversationNum][conversationNodeNum].inventoryChanges[choiceNum, 1];
+        ammo += conversations[conversationNum][conversationNodeNum].inventoryChanges[choiceNum, 2];
+        ores += conversations[conversationNum][conversationNodeNum].inventoryChanges[choiceNum, 3];
 
         updateInventory();
 
-        Invoke("endConversation", 1);
+        bool hasFound = false;
+
+        for (int i = 0; i < conversations[conversationNum].Count; i++)
+        {
+            if (conversations[conversationNum][i].state.Trim().Equals(conversations[conversationNum][conversationNodeNum].state.Trim() + "_" + choiceNum))
+            {
+                conversationNodeNum = i;
+                hasFound = true;
+                break;
+            }
+        }
+
+        clearChoices();
+
+        if (hasFound)
+        {
+            loadChoices();
+        }
+        else
+        {
+            endConversation();
+        }
     }
 
     private void endConversation()
@@ -195,10 +230,24 @@ public class GameController : MonoBehaviour
         NPCUI.SetActive(false);
 
         NPCDialogueText.text = "NPC Dialogue";
+    }
 
+    private void loadChoices()
+    {
+        NPCDialogueText.text = conversations[conversationNum][conversationNodeNum].NPCDialogue;
+        GameObject choiceObject = Resources.Load<GameObject>("Choice");
+
+        for (int i = 0; i < 3; i++)
+        {
+            playerDialogue.transform.GetChild(i).GetComponentInChildren<TMP_Text>().text = conversations[conversationNum][conversationNodeNum].responses[i];
+        }
+    }
+
+    private void clearChoices()
+    {
         foreach (Transform i in playerDialogue.transform)
         {
-            Destroy(i.gameObject);
+            i.GetComponentInChildren<TMP_Text>().text = "Dialogue Choice";
         }
     }
 

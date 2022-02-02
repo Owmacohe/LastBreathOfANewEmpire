@@ -48,8 +48,6 @@ public class SpaceSpawner : MonoBehaviour
             if (count == smallStarCount)
             {
                 tempIndex = 2;
-
-                createStar(tempPosition, size, tempIndex, true);
             }
             else
             {
@@ -61,29 +59,26 @@ public class SpaceSpawner : MonoBehaviour
                 {
                     tempIndex = Random.Range(3, 5);
                 }
+            }
 
-                createStar(tempPosition, size, tempIndex, false);
-            } 
+            createStar(tempPosition, size, tempIndex);
         }
     }
 
-    private void createStar(Vector3 starPosition, float starSize, int colourIndex, bool isBloomDisabled)
+    private void createStar(Vector3 starPosition, float starSize, int colourIndex)
     {
         GameObject newStar = Instantiate(starObject, transform);
         newStar.transform.localPosition = starPosition;
         newStar.transform.localScale = Vector3.one * starSize;
 
-        newStar.GetComponent<Light>().intensity = 2 * starSize;
+        if (starSize == bigStarSize)
+        {
+            Light tempLight = newStar.GetComponent<Light>();
+            tempLight.enabled = true;
+            tempLight.intensity = 2 * starSize;
+        }
 
-        if (isBloomDisabled)
-        {
-            newStar.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Star_Small");
-            Destroy(newStar.GetComponent<PostProcessVolume>());
-        }
-        else
-        {
-            newStar.GetComponent<MeshRenderer>().material = starColours[colourIndex];
-        }
+        newStar.GetComponent<MeshRenderer>().material = starColours[colourIndex];
 
         stars.Add(newStar);
     }
