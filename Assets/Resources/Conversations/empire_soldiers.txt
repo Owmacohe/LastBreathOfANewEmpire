@@ -1,0 +1,43 @@
+---
+0
+Hey you, shopkeeper! Your tax is due to the Empire. Hand it over!
+Yes, of course. Here are my credits.
+Your Empire is falling just as soon as it rose. I owe you nothing.
+Perhaps we can arrange a deal?
+===
+-15 0 0 0
+0 0 0 0
+0 0 0 0
+---
+0_0
+The Empire still reigns almighty in this sector. Don't forget that.
+===
+---
+0_1
+Your insults will only serve to harm you when we regain our former strength. I'm confiscating this ammo.
+===
+0 0 -10 0
+---
+0_2
+The arrangement would have to be very favourable.
+Do you desire ammo instead?
+Maybe some mineral ores?
+Never mind, I don't want to barter.
+===
+0 0 -15 0
+0 0 0 -15
+0 0 0 0
+---
+0_2_0
+Your contribution will help to arm our shock troops.
+===
+---
+0_2_1
+Your fancy rocks mean nothing to the glory of our military state. I'll take that tax now.
+===
+-15 0 0 0
+---
+0_2_2
+Your insults will only serve to harm you when we regain our former strength. I'm confiscating this ammo.
+===
+0 0 -10 0

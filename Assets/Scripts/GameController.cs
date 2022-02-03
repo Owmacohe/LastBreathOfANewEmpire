@@ -146,7 +146,7 @@ public class GameController : MonoBehaviour
 
         isOpen = true;
 
-        playerName = "Player Name";
+        playerName = "Shopkeeper";
     }
 
     private void FixedUpdate()
@@ -264,6 +264,8 @@ public class GameController : MonoBehaviour
         NPCUI.SetActive(false);
 
         NPCDialogueText.text = "NPC Dialogue";
+
+        conversations.Remove(conversations[conversationNum]);
     }
 
     private void loadChoices()
