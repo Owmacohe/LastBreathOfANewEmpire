@@ -97,6 +97,9 @@ public class SpaceSpawner : MonoBehaviour
             planets.Add(newPlanet);
         }
 
-        GetComponent<GameController>().loadHome();
+        if (GetComponent<GameController>() != null)
+        {
+            GetComponent<GameController>().loadHome();
+        }
     }
 }

@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour
     }
     private List<List<convoNode>> conversations;
     private int conversationNum, conversationNodeNum;
+    private TMP_Text[] choices;
 
     private int credits, rations, ammo;
     private float ores;
@@ -72,10 +73,11 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        credits = 100;
-        rations = 200;
-        ammo = 300;
-        ores = 400;
+        credits = 50;
+        rations = 50;
+        ammo = 50;
+        ores = 50;
+        updateInventory();
 
         starshipObject = Resources.Load<GameObject>("Starship");
         portraits = Resources.LoadAll<Sprite>("Portraits");
@@ -115,17 +117,31 @@ public class GameController : MonoBehaviour
 
                     for (int k = 0; k < 3; k++)
                     {
-                        string[] tempSplit = split[j + k].Split(' ');
-
-                        for (int l = 0; l < 4; l++)
+                        if ((j + k) < split.Length && !split[j + k].Trim().Equals("---"))
                         {
-                            newNode.inventoryChanges[k, l] = int.Parse(tempSplit[l]);
+                            string[] tempSplit = split[j + k].Split(' ');
+
+                            for (int l = 0; l < 4; l++)
+                            {
+                                newNode.inventoryChanges[k, l] = int.Parse(tempSplit[l]);
+                            }
+                        }
+                        else
+                        {
+                            break;
                         }
                     }
 
                     conversations[f].Add(newNode);
                 }
             }
+        }
+
+        choices = new TMP_Text[3];
+
+        for (int j = 0; j < playerDialogue.transform.childCount; j++)
+        {
+            choices[j] = playerDialogue.transform.GetChild(j).GetComponentInChildren<TMP_Text>();
         }
 
         isOpen = true;
@@ -163,6 +179,11 @@ public class GameController : MonoBehaviour
         homePlanet = minPlanet;
 
         GameObject homeMarker = Instantiate(Resources.Load<GameObject>("Home"), homePlanet.transform);
+
+        if (isOpen)
+        {
+            createStarship();
+        }
     }
 
     private void createStarship()
@@ -186,6 +207,11 @@ public class GameController : MonoBehaviour
         NPCNameText.text = NPCNamePrefixes[Random.Range(0, NPCNamePrefixes.Length)] + NPCNameSuffixes[Random.Range(0, NPCNameSuffixes.Length)];
         NPCPortrait.sprite = portraits[Random.Range(0, portraits.Length)];
 
+        for (int i = 0; i < 3; i++)
+        {
+            choices[i].transform.parent.gameObject.SetActive(true);
+        }
+
         loadChoices();
     }
 
@@ -195,7 +221,6 @@ public class GameController : MonoBehaviour
         rations += conversations[conversationNum][conversationNodeNum].inventoryChanges[choiceNum, 1];
         ammo += conversations[conversationNum][conversationNodeNum].inventoryChanges[choiceNum, 2];
         ores += conversations[conversationNum][conversationNodeNum].inventoryChanges[choiceNum, 3];
-
         updateInventory();
 
         bool hasFound = false;
@@ -210,8 +235,6 @@ public class GameController : MonoBehaviour
             }
         }
 
-        clearChoices();
-
         if (hasFound)
         {
             loadChoices();
@@ -224,6 +247,17 @@ public class GameController : MonoBehaviour
 
     private void endConversation()
     {
+        convoNode convoTemp = conversations[conversationNum][conversationNodeNum];
+
+        if (convoTemp.responses.Count == 0 && convoTemp.inventoryChanges.Length > 0)
+        {
+            credits += conversations[conversationNum][conversationNodeNum].inventoryChanges[0, 0];
+            rations += conversations[conversationNum][conversationNodeNum].inventoryChanges[0, 1];
+            ammo += conversations[conversationNum][conversationNodeNum].inventoryChanges[0, 2];
+            ores += conversations[conversationNum][conversationNodeNum].inventoryChanges[0, 3];
+            updateInventory();
+        }
+
         isOpen = true;
 
         playerUI.SetActive(false);
@@ -235,19 +269,24 @@ public class GameController : MonoBehaviour
     private void loadChoices()
     {
         NPCDialogueText.text = conversations[conversationNum][conversationNodeNum].NPCDialogue;
-        GameObject choiceObject = Resources.Load<GameObject>("Choice");
+        List<string> tempChoices = conversations[conversationNum][conversationNodeNum].responses;
 
         for (int i = 0; i < 3; i++)
         {
-            playerDialogue.transform.GetChild(i).GetComponentInChildren<TMP_Text>().text = conversations[conversationNum][conversationNodeNum].responses[i];
+            if (i <= tempChoices.Count - 1)
+            {
+                string choiceText = tempChoices[i];
+                choices[i].text = choiceText;
+            }
+            else
+            {
+                choices[i].transform.parent.gameObject.SetActive(false);
+            }
         }
-    }
 
-    private void clearChoices()
-    {
-        foreach (Transform i in playerDialogue.transform)
+        if (tempChoices.Count == 0)
         {
-            i.GetComponentInChildren<TMP_Text>().text = "Dialogue Choice";
+            Invoke("endConversation", (NPCDialogueText.text.Length * 0.1f));
         }
     }
 

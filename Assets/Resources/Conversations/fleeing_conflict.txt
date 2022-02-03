@@ -1,0 +1,41 @@
+---
+0
+I'm so glad we passed through here! We're in desperate need of rations for our jouney.
+Why are you fleeing the star system?
+I don't have any rations to sell...
+Here you go!
+===
+0 0 0 0
+0 0 0 0
+10 -15 0 0
+---
+0_0
+With the loss of the Empire's hold in this sector, it's simply not safe anymore.
+Well here, have some at a discount then.
+I don't have any rations to sell...
+Here you go!
+===
+5 -15 0 0
+0 0 0 0
+10 -15 0 0
+---
+0_1
+Oh, I see. Perhaps we'll find some in the next system.
+===
+---
+0_2
+Thank you so much!
+===
+---
+0_0_0
+You're terribly generous. We have no use of this ammo, so please take it as well.
+===
+0 0 10 0
+---
+0_0_1
+Oh, I see. Perhaps we'll find some in the next system.
+===
+---
+0_0_2
+Thank you so much!
+===
