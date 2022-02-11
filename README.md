@@ -58,3 +58,21 @@
 1. The game is meant to slowly feed the narrative to the player through these small dialogue interactions. From the limited amount that you’ve seen, do you think that a full-fledged narrative could be accomplished this way?
 2. Would this fare better as a 3D game with an actual shop environment? Or is the minimal UI a style of its own?
 3. Should the narrative stakes be lowered? In other words, is the story’s scope and worldbuilding too vast?
+
+## Results from playtesting
+
+### Main issues
+- Visuals were a bit diorienting for playtesters who had mostly used 3D
+- Lack of clue as to what the context was hindered players at the start
+- The bug which failed to take the player to the end screen was a prominent issue
+- there was a non-zero amount of comments requesting a tutorial
+
+### Main enjoyments
+- The feasibility of the game was echoed by most, if not all playtesters
+- Playtesters felt that the UI didn't need any 3D additions
+- They also felt that the scope wasn't too vast, and they were able to grasp the narrative relatively quickly
+
+### Improvements to be made
+- Though playtesters enjoyed the visuals, I would want to encorporate more 3D into the UI and some events
+- To resolve some of the initial worldbuilding confusion of the players, I would want to maybe have a prologue or tutorial of sorts
+- From the live playtest, I really noticed that I needed to scale the takes up a bit more. The resources depleted for too slowly
