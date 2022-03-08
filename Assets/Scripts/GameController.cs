@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
@@ -266,6 +267,11 @@ public class GameController : MonoBehaviour
         NPCDialogueText.text = "NPC Dialogue";
 
         conversations.Remove(conversations[conversationNum]);
+
+        if (conversations.Count == 0)
+        {
+            SceneManager.LoadSceneAsync("End");
+        }
     }
 
     private void loadChoices()
