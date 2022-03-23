@@ -22,6 +22,7 @@ public class StarshipFly : MonoBehaviour
         }
         else
         {
+            transform.LookAt(controller.homePlanet.transform);
             transform.localPosition += transform.forward * speed;
         }
     }

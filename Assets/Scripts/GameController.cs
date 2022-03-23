@@ -34,6 +34,7 @@ public class GameController : MonoBehaviour
     private float ores;
     [HideInInspector]
     public GameObject homePlanet;
+    private GameObject homeMarker;
     private GameObject starshipObject;
     private GameObject playerUI, NPCUI;
     private List<GameObject> planets;
@@ -156,6 +157,11 @@ public class GameController : MonoBehaviour
         {
             createStarship();
         }
+
+        if (homeMarker != null)
+        {
+            homeMarker.transform.rotation = Quaternion.Euler(Vector3.right * 90);
+        }
     }
 
     public void loadHome()
@@ -179,7 +185,7 @@ public class GameController : MonoBehaviour
         planets.Remove(minPlanet);
         homePlanet = minPlanet;
 
-        GameObject homeMarker = Instantiate(Resources.Load<GameObject>("Home"), homePlanet.transform);
+        homeMarker = Instantiate(Resources.Load<GameObject>("Home"), homePlanet.transform);
 
         if (isOpen)
         {
@@ -193,7 +199,6 @@ public class GameController : MonoBehaviour
 
         GameObject newShip = Instantiate(starshipObject);
         newShip.transform.position = planets[Random.Range(0, planets.Count)].transform.position + (Vector3.up * 0.2f);
-        newShip.transform.LookAt(homePlanet.transform);
     }
 
     public void startCoversation()

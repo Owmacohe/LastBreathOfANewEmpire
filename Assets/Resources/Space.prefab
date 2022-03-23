@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5766891162950665002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5766891162950665001}
+  - component: {fileID: 5766891162950665000}
+  - component: {fileID: 5766891162950665003}
+  m_Layer: 0
+  m_Name: Space
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5766891162950665001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5766891162950665002}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5766891162950665000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5766891162950665002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f0975b714d818544b1b53d5068dedee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spaceBounds: {x: 5.5, y: 3}
+  starColours:
+  - {fileID: 2100000, guid: 77a74ccbc0afee14e8a8ab0bdc1f5817, type: 2}
+  - {fileID: 2100000, guid: 28eccceb11829c9478da68579b40299e, type: 2}
+  - {fileID: 2100000, guid: 680a1a508200d994fb352b6bdc0c4e46, type: 2}
+  - {fileID: 2100000, guid: 48813dfb0955b2d4989a3327d50d587d, type: 2}
+  - {fileID: 2100000, guid: 39e0ad3d48984c148b2943229016d2f8, type: 2}
+  planetColours:
+  - {fileID: 2100000, guid: 787ccdf7627054b40b6fa268a5c38d20, type: 2}
+  - {fileID: 2100000, guid: defe8dff4746bb04c856280cd3801496, type: 2}
+  - {fileID: 2100000, guid: bb9fd843736a17941abac20fb61e5d27, type: 2}
+  orbitSpeed: 1
+  smallStarCount: 1000
+  smallStarSize: 0.02
+  midStarCount: 25
+  midStarSize: 0.08
+  bigStarCount: 5
+  bigStarSize: 0.5
+  planetCount: 10
+  smallStars: []
+  midStars: []
+  bigStars: []
+  planets: []
+--- !u!114 &5766891162950665003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5766891162950665002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7662628aecd227147af4af7ca0607c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

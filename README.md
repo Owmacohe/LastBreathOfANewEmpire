@@ -65,7 +65,7 @@
 - Visuals were a bit diorienting for playtesters who had mostly used 3D
 - Lack of clue as to what the context was hindered players at the start
 - The bug which failed to take the player to the end screen was a prominent issue
-- there was a non-zero amount of comments requesting a tutorial
+- There was a non-zero amount of comments requesting a tutorial
 
 ### Main enjoyments
 - The feasibility of the game was echoed by most, if not all playtesters
