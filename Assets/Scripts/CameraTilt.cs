@@ -17,8 +17,8 @@ public class CameraTilt : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 50, layer))
             {
-                //transform.LookAt(hit.point);
-                transform.Rotate(hit.point - Vector3.zero);
+                transform.LookAt(hit.point / 2);
+                //transform.Rotate(hit.point - Vector3.zero);
             }
         }
     }

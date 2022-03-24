@@ -125,7 +125,7 @@ public class SpaceSpawner : MonoBehaviour
             tempLight.intensity = 2 * starSize;
         }
 
-        newStar.GetComponent<MeshRenderer>().material = starColours[colourIndex];
+        newStar.transform.GetChild(0).GetComponent<MeshRenderer>().material = starColours[colourIndex];
 
         if (!tag.Equals(""))
         {
@@ -160,7 +160,12 @@ public class SpaceSpawner : MonoBehaviour
                     trail.endWidth = 0;
                     tempSpeedMin = 0.01f;
                     tempSpeedMax = 0.02f;
+                    newStar.transform.GetChild(0).GetComponent<BellRinging>().size = BellRinging.BellSize.Mid;
                 }
+            }
+            else
+            {
+                newStar.transform.GetChild(0).GetComponent<BellRinging>().size = BellRinging.BellSize.Big;
             }
         }
 

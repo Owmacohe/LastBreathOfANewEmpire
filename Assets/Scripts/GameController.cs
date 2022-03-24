@@ -145,12 +145,17 @@ public class GameController : MonoBehaviour
             {
                 createStarship();
             }
-
-            if (homeMarker != null)
-            {
-                homeMarker.transform.rotation = Quaternion.Euler(Vector3.right * 90);
-            }
         }
+
+        if (homeMarker != null)
+        {
+            homeMarker.transform.rotation = Quaternion.Euler(Vector3.right * 90);
+        }
+    }
+
+    public void startTutorial()
+    {
+        loadHome();
     }
 
     public void startGame()
@@ -170,8 +175,6 @@ public class GameController : MonoBehaviour
         {
             choices[j] = playerDialogue.transform.GetChild(j).GetComponentInChildren<TMP_Text>();
         }
-
-        loadHome();
 
         isOpen = true;
         hasStartedGame = true;
@@ -197,6 +200,8 @@ public class GameController : MonoBehaviour
 
         planets.Remove(minPlanet);
         homePlanet = minPlanet;
+
+        homePlanet.GetComponent<Orbit>().speed = 0;
 
         homeMarker = Instantiate(Resources.Load<GameObject>("Home"), homePlanet.transform);
 
