@@ -2,46 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    [Header("UI")]
-    public TMP_Text creditsText;
-    public TMP_Text rationsText;
-    public TMP_Text ammoText;
-    public TMP_Text oresText;
-    public TMP_Text playerNameText;
-    public GameObject playerDialogue;
-    public TMP_Text NPCNameText;
-    public Image NPCPortrait;
-    public TMP_Text NPCDialogueText;
+    [SerializeField] GameObject UI;
+    [SerializeField] TMP_Text creditsText;
+    [SerializeField] TMP_Text rationsText;
+    [SerializeField] TMP_Text ammoText;
+    [SerializeField] TMP_Text oresText;
+    [SerializeField] TMP_Text playerNameText;
+    [SerializeField] GameObject playerDialogue;
+    [SerializeField] TMP_Text NPCNameText;
+    [SerializeField] Image NPCPortrait;
+    [SerializeField] TMP_Text NPCDialogueText;
 
-    private TextAsset[] conversationFiles;
-    private struct convoNode
+    TextAsset[] conversationFiles;
+    struct convoNode
     {
         public string state;
         public string NPCDialogue;
         public List<string> responses;
         public int[,] inventoryChanges;
     }
-    private List<List<convoNode>> conversations;
-    private int conversationNum, conversationNodeNum;
-    private TMP_Text[] choices;
+    List<List<convoNode>> conversations;
+    int conversationNum, conversationNodeNum;
+    TMP_Text[] choices;
 
-    private int credits, rations, ammo;
-    private float ores;
-    [HideInInspector]
-    public GameObject homePlanet;
-    private GameObject homeMarker;
-    private GameObject starshipObject;
-    private GameObject playerUI, NPCUI;
-    private List<GameObject> planets;
-    private bool isOpen;
+    int credits, rations, ammo;
+    float ores;
+    [HideInInspector] public GameObject homePlanet;
+    GameObject homeMarker;
+    GameObject starshipObject;
+    GameObject playerUI, NPCUI;
+    List<GameObject> planets;
+    bool isOpen, hasStartedGame;
 
-    private string playerName;
-    private string[] NPCNamePrefixes = {
+    [HideInInspector] public string playerName;
+
+    string[] NPCNamePrefixes = {
         "Gor",
         "Blez",
         "Zyhaph",
@@ -57,7 +56,8 @@ public class GameController : MonoBehaviour
         "Son",
         "Yog"
     };
-    private string[] NPCNameSuffixes = {
+
+    string[] NPCNameSuffixes = {
         "go",
         "omat",
         "omel",
@@ -71,23 +71,20 @@ public class GameController : MonoBehaviour
         "ia",
         "othor"
     };
-    private Sprite[] portraits;
+
+    Sprite[] portraits;
 
     private void Start()
     {
+        UI.SetActive(false);
+
         credits = 50;
         rations = 50;
         ammo = 50;
         ores = 50;
-        updateInventory();
 
         starshipObject = Resources.Load<GameObject>("Starship");
         portraits = Resources.LoadAll<Sprite>("Portraits");
-
-        playerUI = GameObject.FindGameObjectWithTag("Player");
-        playerUI.SetActive(false);
-        NPCUI = GameObject.FindGameObjectWithTag("NPC");
-        NPCUI.SetActive(false);
 
         conversationFiles = Resources.LoadAll<TextAsset>("Conversations");
         conversations = new List<List<convoNode>>();
@@ -138,6 +135,34 @@ public class GameController : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void FixedUpdate()
+    {
+        if (hasStartedGame)
+        {
+            if (isOpen && Random.Range(0, 200) <= 1)
+            {
+                createStarship();
+            }
+
+            if (homeMarker != null)
+            {
+                homeMarker.transform.rotation = Quaternion.Euler(Vector3.right * 90);
+            }
+        }
+    }
+
+    public void startGame()
+    {
+        UI.SetActive(true);
+
+        updateInventory();
+
+        playerUI = GameObject.FindGameObjectWithTag("Player");
+        playerUI.SetActive(false);
+        NPCUI = GameObject.FindGameObjectWithTag("NPC");
+        NPCUI.SetActive(false);
 
         choices = new TMP_Text[3];
 
@@ -146,22 +171,10 @@ public class GameController : MonoBehaviour
             choices[j] = playerDialogue.transform.GetChild(j).GetComponentInChildren<TMP_Text>();
         }
 
+        loadHome();
+
         isOpen = true;
-
-        playerName = "Shopkeeper";
-    }
-
-    private void FixedUpdate()
-    {
-        if (isOpen && Random.Range(0, 200) <= 1)
-        {
-            createStarship();
-        }
-
-        if (homeMarker != null)
-        {
-            homeMarker.transform.rotation = Quaternion.Euler(Vector3.right * 90);
-        }
+        hasStartedGame = true;
     }
 
     public void loadHome()
@@ -275,7 +288,8 @@ public class GameController : MonoBehaviour
 
         if (conversations.Count == 0)
         {
-            SceneManager.LoadSceneAsync("End");
+            hasStartedGame = false;
+            GetComponent<SceneController>().load("End");
         }
     }
 

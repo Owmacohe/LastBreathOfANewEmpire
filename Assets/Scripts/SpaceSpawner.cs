@@ -5,24 +5,27 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class SpaceSpawner : MonoBehaviour
 {
-    public Vector2 spaceBounds;
-    public Material[] starColours;
-    public Material[] planetColours;
+    [SerializeField] Vector2 spaceBounds;
+    [SerializeField] Material[] starColours;
+    [SerializeField] Material[] planetColours;
     public float orbitFactor = 1;
 
     [Header("Small Stars")]
-    public int smallStarCount = 800;
-    public float smallStarSize = 0.03f;
-    [Header("Medium Stars")]
-    public int midStarCount = 70;
-    public float midStarSize = 0.1f;
-    [Header("Big Stars")]
-    public int bigStarCount = 7;
-    public float bigStarSize = 0.3f;
-    [Header("Planets")]
-    public int planetCount = 10;
+    [SerializeField] int smallStarCount = 800;
+    [SerializeField] float smallStarSize = 0.03f;
 
-    private GameObject starObject, planetObject;
+    [Header("Medium Stars")]
+    [SerializeField] int midStarCount = 70;
+    [SerializeField] float midStarSize = 0.1f;
+
+    [Header("Big Stars")]
+    [SerializeField] int bigStarCount = 7;
+    [SerializeField] float bigStarSize = 0.3f;
+
+    [Header("Planets")]
+    [SerializeField] int planetCount = 10;
+
+    GameObject starObject, planetObject;
     [HideInInspector] public List<GameObject> smallStars, midStars, bigStars, planets;
 
     private void Start()
@@ -72,10 +75,40 @@ public class SpaceSpawner : MonoBehaviour
                     tempIndex = Random.Range(3, 5);
                     tempTag = "Big";
                     tempList = bigStars;
+
+                    float startSearchTime = Time.time;
+
+                    while (bigStars.Count > 0 && Time.time - startSearchTime < 5 && (minDistanceToBigStars(tempPosition) <= 2 || minDistanceToBigStars(tempPosition) >= 5))
+                    {
+                        tempPosition = new Vector3(Random.Range(-spaceBounds.x, spaceBounds.x), 0, Random.Range(-spaceBounds.y, spaceBounds.y));
+                    }
                 }
             }
 
             createStar(tempPosition, size, tempIndex, tempTag, tempList);
+        }
+    }
+
+    private float minDistanceToBigStars(Vector3 pos)
+    {
+        float minDistance = Mathf.Infinity;
+
+        foreach (GameObject i in bigStars) {
+            float tempPos = Vector3.Distance(pos, i.transform.position);
+
+            if (tempPos < minDistance)
+            {
+                minDistance = tempPos;
+            }
+        }
+
+        if (minDistance == Mathf.Infinity)
+        {
+            return -1;
+        }
+        else
+        {
+            return minDistance;
         }
     }
 
@@ -199,11 +232,6 @@ public class SpaceSpawner : MonoBehaviour
             }
 
             planets.Add(newPlanet);
-        }
-
-        if (GetComponent<GameController>() != null)
-        {
-            GetComponent<GameController>().loadHome();
         }
     }
 }

@@ -6,7 +6,7 @@ public class StarshipFly : MonoBehaviour
 {
     public float speed = 0.01f;
 
-    private GameController controller;
+    GameController controller;
 
     private void Start()
     {

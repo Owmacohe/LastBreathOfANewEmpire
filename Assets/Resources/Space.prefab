@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5766891162950665001}
   - component: {fileID: 5766891162950665000}
-  - component: {fileID: 5766891162950665003}
+  - component: {fileID: 8120146631575956994}
   m_Layer: 0
   m_Name: Space
   m_TagString: Untagged
@@ -28,7 +28,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 5693756175872462823}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -55,7 +56,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 787ccdf7627054b40b6fa268a5c38d20, type: 2}
   - {fileID: 2100000, guid: defe8dff4746bb04c856280cd3801496, type: 2}
   - {fileID: 2100000, guid: bb9fd843736a17941abac20fb61e5d27, type: 2}
-  orbitSpeed: 1
+  orbitFactor: 1
   smallStarCount: 1000
   smallStarSize: 0.02
   midStarCount: 25
@@ -67,7 +68,7 @@ MonoBehaviour:
   midStars: []
   bigStars: []
   planets: []
---- !u!114 &5766891162950665003
+--- !u!114 &8120146631575956994
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -79,3 +80,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7662628aecd227147af4af7ca0607c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7940531660136217712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5693756175872462823}
+  - component: {fileID: 4693989600157714435}
+  m_Layer: 6
+  m_Name: Tilt Plane
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5693756175872462823
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7940531660136217712}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0.7}
+  m_Children: []
+  m_Father: {fileID: 5766891162950665001}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!64 &4693989600157714435
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7940531660136217712}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
