@@ -28,7 +28,7 @@ public class Orbit : MonoBehaviour
     {
         if (rotator != null && speed >= 0.0003f)
         {
-            rotator.transform.Rotate(Vector3.up, speed * spawner.orbitFactor);
+            rotator.transform.Rotate(transform.up, speed * spawner.orbitFactor);
         }
     }
 }

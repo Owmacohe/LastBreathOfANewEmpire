@@ -165,7 +165,7 @@ public class GameController : MonoBehaviour
 
         if (homeMarker != null)
         {
-            homeMarker.transform.rotation = Quaternion.Euler(Vector3.right * 90);
+            homeMarker.transform.rotation = Quaternion.identity;
         }
     }
 

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f0975b714d818544b1b53d5068dedee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaceBounds: {x: 5.5, y: 3}
+  spaceBounds: {x: 6, y: 3.5}
   starColours:
   - {fileID: 2100000, guid: 77a74ccbc0afee14e8a8ab0bdc1f5817, type: 2}
   - {fileID: 2100000, guid: 28eccceb11829c9478da68579b40299e, type: 2}
