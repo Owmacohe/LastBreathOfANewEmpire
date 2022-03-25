@@ -240,7 +240,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<waitfor=15><fade d=5>Unregulated<waitfor=0.5>
+  m_text: '<waitfor=15><fade d=5>Fractured<waitfor=0.5>
 
 
     Militarized<waitfor=0.5>
@@ -637,12 +637,12 @@ MonoBehaviour:
   m_text: '<fade d=5>Sector 214, year 3046<waitfor=1.5>
 
 
-    The second newest star
-    cluster in the known universe to be colonized<waitfor=1.5>
+    The newest star cluster
+    in the known universe to be settled<waitfor=1.5>
 
 
-    Only those seeking
-    wage prospects on the outer mining colonies would live here, let alone thrive'
+    Only those seeking wage
+    prospects on the outer mining colonies would live here, let alone thrive'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6e39fe46ef8a35349afda9ba6a5226a6, type: 2}
   m_sharedMaterial: {fileID: 4929893469917915175, guid: 6e39fe46ef8a35349afda9ba6a5226a6, type: 2}

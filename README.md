@@ -1,5 +1,5 @@
 # Last Breath Of A New Empire
-*First game prototype for my CART 315 class*
+*First game prototype and further iteration for my CART 315 class. Please see below for the appropriate playtester questions (round 2).*
 
 ## Game features
 
@@ -53,13 +53,35 @@
 - Added 3 dialogue files (much more will be needed in a final version)
 - Lots of small tweaks
 
-## Questions for playtesters
+***Entry 7***
+
+- Added some new UI
+- Added star orbiting
+- Lots of visual quality of life changes
+
+***Entry 8***
+
+- Updated the UI again
+- Added the prologue and name selection scenes
+- Lots of behind the scenes stuff
+
+***Entry 9***
+
+- Added sound effects
+- Added star animations to correspond to sound effects
+
+***Entry 10***
+
+- Added wiki for the game
+- Added a bunch of new NPC dialogues
+
+## Questions for playtesters - Round 1
 
 1. The game is meant to slowly feed the narrative to the player through these small dialogue interactions. From the limited amount that you’ve seen, do you think that a full-fledged narrative could be accomplished this way?
 2. Would this fare better as a 3D game with an actual shop environment? Or is the minimal UI a style of its own?
 3. Should the narrative stakes be lowered? In other words, is the story’s scope and worldbuilding too vast?
 
-## Results from playtesting
+## Results from playtesting - Round 1
 
 ### Main issues
 - Visuals were a bit diorienting for playtesters who had mostly used 3D
@@ -76,3 +98,14 @@
 - Though playtesters enjoyed the visuals, I would want to encorporate more 3D into the UI and some events
 - To resolve some of the initial worldbuilding confusion of the players, I would want to maybe have a prologue or tutorial of sorts
 - From the live playtest, I really noticed that I needed to scale the takes up a bit more. The resources depleted for too slowly
+
+## Questions for playtesters - Round 2
+
+1. Is the objective of the game clearly demonstrated?
+2. The narrative is more fully-fledged now. Do you think that the world is immersive enough? Or do I need to add more?
+3. Did the new sound effects work well? Are the randomly-ringing bell chimes too distracting?
+4. Do there need to be more consequences? I feel that it still may be too narrative-heavy.
+5. Were there any bugs with the UI? I was having an issue or two.
+6. *Unrelated:* Would you like to write a dialogue interaction? I’ll put it in the game if you send me one.
+
+## Results from playtesting - Round 2

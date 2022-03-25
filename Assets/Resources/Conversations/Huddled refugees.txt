@@ -10,7 +10,7 @@ Here you go!
 10 -15 0 0
 ---
 0_0
-With the loss of the Empire's hold in this sector, it's simply not safe anymore.
+With the loss of the <shake a=0.3>Empire</shake>'s hold in this sector, it's simply not safe anymore.
 Well here, have some at a discount then.
 I don't have any rations to sell...
 Here you go!

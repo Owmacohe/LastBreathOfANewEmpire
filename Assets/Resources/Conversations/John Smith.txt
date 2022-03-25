@@ -1,0 +1,124 @@
+---
+0
+Greetings, fellow civilian. How do you do today in our fine sector?
+I'm well. How are you?
+Why are you talking like that?
+Honestly? I'm exhausted. All the stress of the recent political chaos has-
+===
+0 0 0 0
+0 0 0 0
+0 0 0 0
+---
+0_0
+I am just dandy, my fine fellow. Came to purvey your wares!
+Yes?
+===
+0 0 0 0
+---
+0_1
+Seriously? It was that easy to see past my facade?
+What do you want?
+===
+0 0 0 0
+---
+0_2
+Yeah, okay that's great. I heard you dealt in... <slide>under the table</slide> mineral ores.
+Yeah, I might have what you're looking for. Doesn't come cheap.
+What? No. This is an honest shop!
+===
+0 0 0 0
+0 0 0 0
+---
+0_0_0
+Okay, I'll drop the act. I heard you dealt in... <slide>under the table</slide> mineral ores.
+Yeah, I might have what you're looking for. Doesn't come cheap.
+What? No. This is an honest shop!
+===
+0 0 0 0
+0 0 0 0
+---
+0_1_0
+I heard you dealt in... <slide>under the table</slide> mineral ores.
+Yeah, I might have what you're looking for. Doesn't come cheap.
+What? No. This is an honest shop!
+===
+0 0 0 0
+0 0 0 0
+---
+0_2_0
+No worries, it's on the <shake a=0.3>Empire</shake>'s bill.
+That'll be 15 credits.
+That'll be 20 credits.
+The Empire? No way, not dealing with you.
+===
+15 0 0 -10
+20 0 0 -10
+0 0 0 0
+---
+0_2_0
+Damn. I must have misheard. You never met me!
+===
+---
+0_0_0_0
+No worries, it's on the <shake a=0.3>Empire</shake>'s bill.
+That'll be 15 credits.
+That'll be 20 credits.
+The Empire? No way, not dealing with you.
+===
+15 0 0 -10
+20 0 0 -10
+0 0 0 0
+---
+0_0_0_1
+Damn. I must have misheard. You never met me!
+===
+---
+0_1_0_0
+No worries, it's on the <shake a=0.3>Empire</shake>'s bill.
+That'll be 15 credits.
+That'll be 20 credits.
+The Empire? No way, not dealing with you.
+===
+15 0 0 -10
+20 0 0 -10
+0 0 0 0
+---
+0_1_0_1
+Damn. I must have misheard. You never met me!
+===
+---
+0_2_0_0
+Sounds like a deal! The <shake a=0.3>Empire</shake> thanks you.
+===
+---
+0_2_0_1
+That high? Sure, I guess. The <shake a=0.3>Empire</shake> thanks you.
+===
+---
+0_2_0_2
+Damn. Another political type. You never met me!
+===
+---
+0_0_0_0_0
+Sounds like a deal! The <shake a=0.3>Empire</shake> thanks you.
+===
+---
+0_0_0_0_1
+That high? Sure, I guess. The <shake a=0.3>Empire</shake> thanks you.
+===
+---
+0_0_0_0_2
+Damn. Another political type. You never met me!
+===
+---
+0_1_0_0_0
+Sounds like a deal! The <shake a=0.3>Empire</shake> thanks you.
+===
+---
+0_1_0_0_1
+That high? Sure, I guess. The <shake a=0.3>Empire</shake> thanks you.
+===
+---
+0_1_0_0_2
+Damn. Another political type. You never met me!
+===

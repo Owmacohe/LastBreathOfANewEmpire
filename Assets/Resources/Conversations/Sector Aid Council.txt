@@ -1,0 +1,52 @@
+---
+0
+Good afternoon. We at the Aid Council are going planet from planet accepting food donations.
+Why do you need supplies?
+Will you take ammo?
+Sure, I'd be happy to donate.
+===
+0 0 0 0
+0 0 0 0
+0 -5 0 0
+---
+0_0
+Places all over the sector have fallen on hard times due to Empire subjugation and harsh mining conditions. Even a small contribution helps.
+I can space some rations.
+Take as much as you'd like.
+I don't have to give anything to you.
+===
+0 -5 0 0
+0 -10 0 0
+0 0 0 0
+---
+0_1
+We're a <wave a=0.5>non-profit</wave>. I don't think that would be proper...
+C'mon, I can't get rid of anything else!
+Alright, I can space some rations then.
+===
+0 0 -5 0
+0 -5 0 0
+---
+0_2
+Your generosity is warmly welcomed. <wave a=0.5>Thank you!</wave>
+===
+---
+0_0_0
+Your generosity is warmly welcomed. <wave a=0.5>Thank you!</wave>
+===
+---
+0_0_1
+Truly? Thank you so much, friend. We'll remember this.
+===
+---
+0_0_2
+No, you don't. Goodbye.
+===
+---
+0_1_0
+Suppose we can sell these to buy rations. Thanks, I guess.
+===
+---
+0_1_1
+Your generosity is warmly welcomed. <wave a=0.5>Thank you!</wave>
+===

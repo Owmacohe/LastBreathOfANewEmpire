@@ -1,0 +1,88 @@
+---
+0
+Hello! Do you have <rainb>candy</rainb>?
+Um... yeah.
+What are you doing here kid?
+Get out of my shop you youngsters!
+===
+0 0 0 0
+0 0 0 0
+0 0 0 0
+---
+0_0
+Give us some! We want <rainb>candy</rainb>!
+Sure, here you go. Free of charge.
+That'll be 3 credits, please.
+How did you get out this far?
+===
+0 -5 0 0
+0 0 0 0
+0 0 0 0
+---
+0_1
+We're getting <rainb>candy</rainb>. From you.
+Right, of course. Here you go. Free of charge.
+Well, that'll be 3 credits, please.
+===
+0 -5 0 0
+0 0 0 0
+---
+0_2
+Boo! You suck!
+===
+---
+0_0_0
+Hey thanks! Guys, I got <rainb>candy</rainb>!
+===
+---
+0_0_1
+We don't have money. You want this cool rock I found?
+Sure. That's fair payment, I guess.
+No, not really.
+===
+0 -5 0 3
+0 0 0 0
+---
+0_0_2
+We stole a starship!
+Well, if you were able to fly this far, I see no problem with that. Here's some <rainb>candy</rainb>.
+Hooligans, eh? Get out!
+===
+0 -5 0 0
+0 0 0 0
+---
+0_1_0
+Hey thanks! Guys, I got <rainb>candy</rainb>!
+===
+---
+0_1_1
+We don't have money. You want this cool rock I found?
+Sure. That's fair payment, I guess.
+No, not really.
+===
+0 -5 0 3
+0 0 0 0
+---
+0_0_1_0
+Hey thanks! Guys, I got <rainb>candy</rainb>!
+===
+---
+0_0_1_1
+Boo! You suck!
+===
+---
+0_0_2_0
+Hey thanks! Guys, I got <rainb>candy</rainb>!
+===
+---
+0_0_2_1
+Boo! You suck!
+===
+---
+0_1_1_0
+Hey thanks! Guys, I got <rainb>candy</rainb>!
+===
+---
+0_1_1_1
+Boo! You suck!
+===

@@ -1,0 +1,65 @@
+---
+0
+Hey! Shopkeep!
+Hello?
+What?
+Nope. Get out. No stinky hippies here.
+===
+0 0 0 0
+0 0 0 0
+0 0 0 0
+---
+0_0
+Can we hide here? The <shake a=0.3>Empire</shake> has been tailing us all day.
+Why is the Empire chasing you?
+I can't have any Empire on my back, sorry.
+If they are, it's probably for a good reason.
+===
+0 0 0 0
+0 0 0 0
+0 0 0 0
+---
+0_1
+What?
+What?
+===
+0 0 0 0
+---
+0_2
+Seriously? <wiggle>You suck.</wiggle>
+===
+---
+0_0_0
+The demonstation near the Dust Belt got really out of control. We're just trying to escape the chaos.
+Well then yeah, you can lay low here for a while.
+I can't have any Empire on my back, sorry.
+If they are, it's probably for a good reason.
+===
+0 0 0 0
+0 0 0 0
+0 0 0 0
+---
+0_0_1
+I understand. Guess we'll have to chance it on our own then...
+===
+---
+0_0_2
+Seriously? Wow. Guess I'm never coming back here.
+===
+---
+0_1_0
+Uh, sorry. Came to the wrong store.
+===
+---
+0_0_0_0
+Thank you so much! You don't know how much this means. Please, take some credits.
+===
+10 0 0 0
+---
+0_0_0_1
+I understand. Guess we'll have to chance it on our own then...
+===
+---
+0_0_0_2
+Seriously? Wow. Guess I'm never coming back here.
+===

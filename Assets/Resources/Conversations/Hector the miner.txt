@@ -10,7 +10,7 @@ I won't sell ore if it's being turned into tools of death.
 0 0 0 0
 ---
 0_0
-Why, to take back control of the sector! Surely you abhor the Empire as much as we do?
+Why, to take back control of the sector! Surely you abhor the <shake a=0.3>Empire</shake> as much as we do?
 Indeed I do. Take these at a discount.
 Well to you, these now cost more.
 You resistance fighters are traitors. I won't sell to you.

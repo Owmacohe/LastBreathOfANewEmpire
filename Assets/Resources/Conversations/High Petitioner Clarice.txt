@@ -1,0 +1,107 @@
+---
+0
+Do you have a moment to talk about an <wave a=0.5>exciting new petition</wave>?
+Nope. I don't want to buy anything.
+Sure, why not.
+===
+0 0 0 0
+0 0 0 0
+---
+0_0
+No, wait I-
+===
+---
+0_1
+Thank you! I'm here collecting signiatures for a petition to expand the interstellar starship highway. Will you sign?
+The what?
+Yeah, sounds neat!
+No way, our skies are cluttered as it is.
+===
+0 0 0 0
+0 0 0 0
+0 0 0 0
+---
+0_1_0
+The interstellar highway runs from the outer mining colonies all the way to the capitol planets. Its expansion to this sector would boost the economy.
+Sure, sounds good to me.
+No way, our skies are cluttered as it is.
+===
+0 0 0 0
+0 0 0 0
+0 0 0 0
+---
+0_1_1
+Your signiature is greatly appreciated!
+===
+---
+0_1_2
+Are you sure I can't convince you? Maybe to the tune of 20 credits?
+That sounds convincing enough for me.
+Are you bribing me?
+Absolutely not.
+===
+20 0 0 0
+0 0 0 0
+0 0 0 0
+---
+0_1_0_0
+Your signiature is greatly appreciated!
+===
+---
+0_1_0_1
+Are you sure I can't convince you? Maybe to the tune of 20 credits?
+That sounds convincing enough for me.
+Are you bribing me?
+Absolutely not.
+===
+20 0 0 0
+0 0 0 0
+0 0 0 0
+---
+0_1_2_0
+Your signiature is greatly appreciated!
+===
+---
+0_1_2_1
+Yes.
+Then I'll sign.
+Definitely not signing.
+===
+20 0 0 0
+0 0 0 0
+---
+0_1_2_2
+Suit yourself. Progress can't be stopped.
+===
+---
+0_1_0_1_0
+Your signiature is greatly appreciated!
+===
+---
+0_1_0_1_1
+Yes.
+Then I'll sign.
+Definitely not signing.
+===
+20 0 0 0
+0 0 0 0
+---
+0_1_0_1_2
+Suit yourself. Progress can't be stopped.
+===
+---
+0_1_2_1_0
+Your signiature is greatly appreciated!
+===
+---
+0_1_2_1_1
+Suit yourself. Progress can't be stopped.
+===
+---
+0_1_0_1_1_0
+Your signiature is greatly appreciated!
+===
+---
+0_1_0_1_1_1
+Suit yourself. Progress can't be stopped.
+===

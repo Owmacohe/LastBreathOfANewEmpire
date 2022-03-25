@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] GameObject UI;
     [SerializeField] TMP_Text creditsText;
     [SerializeField] TMP_Text rationsText;
     [SerializeField] TMP_Text ammoText;
@@ -20,6 +19,7 @@ public class GameController : MonoBehaviour
     TextAsset[] conversationFiles;
     struct convoNode
     {
+        public string name;
         public string state;
         public string NPCDialogue;
         public List<string> responses;
@@ -32,9 +32,10 @@ public class GameController : MonoBehaviour
     int credits, rations, ammo;
     float ores;
     [HideInInspector] public GameObject homePlanet;
+    GameObject playerUI;
+    GameObject NPCUI;
     GameObject homeMarker;
     GameObject starshipObject;
-    GameObject playerUI, NPCUI;
     List<GameObject> planets;
     bool isOpen, hasStartedGame;
 
@@ -76,12 +77,15 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        UI.SetActive(false);
+        playerUI = GameObject.FindGameObjectWithTag("Player");
+        playerUI.SetActive(false);
+        NPCUI = GameObject.FindGameObjectWithTag("NPC");
+        NPCUI.SetActive(false);
 
-        credits = 50;
-        rations = 50;
-        ammo = 50;
-        ores = 50;
+        credits = 30;
+        rations = 30;
+        ammo = 30;
+        ores = 30;
 
         starshipObject = Resources.Load<GameObject>("Starship");
         portraits = Resources.LoadAll<Sprite>("Portraits");
@@ -94,45 +98,57 @@ public class GameController : MonoBehaviour
             conversations.Add(new List<convoNode>());
             string[] split = conversationFiles[f].text.Split('\n');
 
+            int count = 0;
+
             for (int i = 0; i < split.Length; i++)
             {
                 if (split[i].Trim().Equals("---"))
                 {
                     convoNode newNode;
+                    newNode.name = conversationFiles[f].name;
                     newNode.state = split[i + 1];
                     newNode.NPCDialogue = split[i + 2];
                     newNode.responses = new List<string>();
 
-                    int j = i + 3;
-                    while (!split[j].Trim().Equals("==="))
+                    try
                     {
-                        newNode.responses.Add(split[j]);
-                        j++;
-                    }
-
-                    j++;
-
-                    newNode.inventoryChanges = new int[3, 4];
-
-                    for (int k = 0; k < 3; k++)
-                    {
-                        if ((j + k) < split.Length && !split[j + k].Trim().Equals("---"))
+                        int j = i + 3;
+                        while (!split[j].Trim().Equals("==="))
                         {
-                            string[] tempSplit = split[j + k].Split(' ');
+                            newNode.responses.Add(split[j]);
+                            j++;
+                        }
 
-                            for (int l = 0; l < 4; l++)
+                        j++;
+
+                        newNode.inventoryChanges = new int[3, 4];
+
+                        for (int k = 0; k < 3; k++)
+                        {
+                            if ((j + k) < split.Length && !split[j + k].Trim().Equals("---"))
                             {
-                                newNode.inventoryChanges[k, l] = int.Parse(tempSplit[l]);
+                                string[] tempSplit = split[j + k].Split(' ');
+
+                                for (int l = 0; l < 4; l++)
+                                {
+                                    newNode.inventoryChanges[k, l] = int.Parse(tempSplit[l]);
+                                }
+                            }
+                            else
+                            {
+                                break;
                             }
                         }
-                        else
-                        {
-                            break;
-                        }
-                    }
 
-                    conversations[f].Add(newNode);
+                        conversations[f].Add(newNode);
+                    }
+                    catch
+                    {
+                        print("ERROR: " + newNode.name + " on line " + count);
+                    }
                 }
+
+                count++;
             }
         }
     }
@@ -160,14 +176,7 @@ public class GameController : MonoBehaviour
 
     public void startGame()
     {
-        UI.SetActive(true);
-
         updateInventory();
-
-        playerUI = GameObject.FindGameObjectWithTag("Player");
-        playerUI.SetActive(false);
-        NPCUI = GameObject.FindGameObjectWithTag("NPC");
-        NPCUI.SetActive(false);
 
         choices = new TMP_Text[3];
 
@@ -228,7 +237,8 @@ public class GameController : MonoBehaviour
         playerUI.SetActive(true);
         playerNameText.text = playerName;
         NPCUI.SetActive(true);
-        NPCNameText.text = NPCNamePrefixes[Random.Range(0, NPCNamePrefixes.Length)] + NPCNameSuffixes[Random.Range(0, NPCNameSuffixes.Length)];
+        //NPCNameText.text = NPCNamePrefixes[Random.Range(0, NPCNamePrefixes.Length)] + NPCNameSuffixes[Random.Range(0, NPCNameSuffixes.Length)];
+        NPCNameText.text = conversations[conversationNum][conversationNodeNum].name;
         NPCPortrait.sprite = portraits[Random.Range(0, portraits.Length)];
 
         for (int i = 0; i < 3; i++)

@@ -1,6 +1,6 @@
 ---
 0
-Hey you, shopkeeper! Your tax is due to the Empire. Hand it over!
+Hey you, shopkeeper! Your tax is due to the <shake a=0.3>Empire</shake>. Hand it over!
 Yes, of course. Here are my credits.
 Your Empire is falling just as soon as it rose. I owe you nothing.
 Perhaps we can arrange a deal?
@@ -10,7 +10,7 @@ Perhaps we can arrange a deal?
 0 0 0 0
 ---
 0_0
-The Empire still reigns almighty in this sector. Don't forget that.
+The <shake a=0.3>Empire</shake> still reigns almighty in this sector. Don't forget that.
 ===
 ---
 0_1
