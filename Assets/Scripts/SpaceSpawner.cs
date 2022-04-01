@@ -37,14 +37,14 @@ public class SpaceSpawner : MonoBehaviour
         starObject = Resources.Load<GameObject>("Star");
         planetObject = Resources.Load<GameObject>("Planet");
 
-        createStarBatch(bigStarCount, bigStarSize);
-        createStarBatch(midStarCount, midStarSize);
-        createStarBatch(smallStarCount, smallStarSize);
+        CreateStarBatch(bigStarCount, bigStarSize);
+        CreateStarBatch(midStarCount, midStarSize);
+        CreateStarBatch(smallStarCount, smallStarSize);
 
-        createPlanetBatch(planetCount);
+        CreatePlanetBatch(planetCount);
     }
 
-    private void createStarBatch(int count, float size)
+    private void CreateStarBatch(int count, float size)
     {
         for (int i = 0; i < count; i++)
         {
@@ -78,18 +78,18 @@ public class SpaceSpawner : MonoBehaviour
 
                     float startSearchTime = Time.time;
 
-                    while (bigStars.Count > 0 && Time.time - startSearchTime < 5 && (minDistanceToBigStars(tempPosition) <= 2 || minDistanceToBigStars(tempPosition) >= 5))
+                    while (bigStars.Count > 0 && Time.time - startSearchTime < 5 && (MinDistanceToBigStars(tempPosition) <= 2 || MinDistanceToBigStars(tempPosition) >= 5))
                     {
                         tempPosition = new Vector3(Random.Range(-spaceBounds.x, spaceBounds.x), 0, Random.Range(-spaceBounds.y, spaceBounds.y));
                     }
                 }
             }
 
-            createStar(tempPosition, size, tempIndex, tempTag, tempList);
+            CreateStar(tempPosition, size, tempIndex, tempTag, tempList);
         }
     }
 
-    private float minDistanceToBigStars(Vector3 pos)
+    private float MinDistanceToBigStars(Vector3 pos)
     {
         float minDistance = Mathf.Infinity;
 
@@ -112,7 +112,7 @@ public class SpaceSpawner : MonoBehaviour
         }
     }
 
-    private void createStar(Vector3 starPosition, float starSize, int colourIndex, string starTag, List<GameObject> starList)
+    private void CreateStar(Vector3 starPosition, float starSize, int colourIndex, string starTag, List<GameObject> starList)
     {
         GameObject newStar = Instantiate(starObject, transform);
         newStar.transform.localPosition = starPosition;
@@ -199,7 +199,7 @@ public class SpaceSpawner : MonoBehaviour
         }
     }
 
-    private void createPlanetBatch(int count)
+    private void CreatePlanetBatch(int count)
     {
         for (int i = 0; i < count; i++)
         {

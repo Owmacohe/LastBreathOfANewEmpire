@@ -29,18 +29,18 @@ public class SceneController : MonoBehaviour
         }
     }
 
-    public void load(string sceneName)
+    public void Load(string sceneName)
     {
         SceneManager.LoadSceneAsync(sceneName);
 
         if (sceneName.Equals("Main Scene"))
         {
             controller.playerName = FindObjectOfType<TMP_InputField>().text;
-            controller.startTutorial();
+            controller.StartTutorial();
         }
     }
 
-    public void quitGame()
+    public void QuitGame()
     {
         print("Quit game!");
         Application.Quit(0);
@@ -51,7 +51,7 @@ public class SceneController : MonoBehaviour
         switch (message)
         {
             case "start":
-                controller.startGame();
+                controller.StartGame();
                 break;
         }
     }

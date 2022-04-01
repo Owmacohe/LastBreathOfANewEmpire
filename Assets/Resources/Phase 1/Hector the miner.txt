@@ -1,3 +1,6 @@
+-inf -inf -inf
+inf inf inf
+none
 ---
 0
 We are miners from the far star clusters. We need ores to smelt into weapons.
@@ -8,6 +11,10 @@ I won't sell ore if it's being turned into tools of death.
 0 0 0 0
 20 0 0 -15
 0 0 0 0
+~~~
+0 0 0
+0 0 10
+0 0 -10
 ---
 0_0
 Why, to take back control of the sector! Surely you abhor the <shake a=0.3>Empire</shake> as much as we do?
@@ -18,23 +25,32 @@ You resistance fighters are traitors. I won't sell to you.
 10 0 0 -15
 30 0 0 -15
 0 0 0 0
+~~~
+0 0 15
+0 0 -10
+0 0 -10
 ---
 0_1
 Your effort to the liberation cause is warmly accepted, friend.
 ===
+~~~
 ---
 0_2
 You lack awareness of what's happening around you. I hope that one day you come to your senses.
 ===
+~~~
 ---
 0_0_0
 You are too kind, shopkeeper. It's people like you and I who are building the new sector.
 ===
+~~~
 ---
 0_0_1
 We... We need these. So I suppose we'll have to buy. You should be ashamed.
 ===
+~~~
 ---
 0_0_2
 You lack awareness of what's happening around you. I hope that one day you come to your senses.
 ===
+~~~

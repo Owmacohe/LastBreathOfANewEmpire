@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StarshipFly : MonoBehaviour
 {
-    public float speed = 0.01f;
+    [SerializeField] float speed = 0.01f;
 
     GameController controller;
 
@@ -17,7 +17,7 @@ public class StarshipFly : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, controller.homePlanet.transform.position) <= 0.1f)
         {
-            controller.startCoversation();
+            controller.StartCoversation();
             Destroy(gameObject);
         }
         else

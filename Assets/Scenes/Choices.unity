@@ -323,7 +323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2916322729367979910, guid: 374d0c6369e0c8c4ab05dd2e0c7a19fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: load
+      value: Load
       objectReference: {fileID: 0}
     - target: {fileID: 2916322729367979910, guid: 374d0c6369e0c8c4ab05dd2e0c7a19fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

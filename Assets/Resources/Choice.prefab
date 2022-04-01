@@ -249,7 +249,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 244394096878973365}
           m_TargetAssemblyTypeName: ButtonHover, Assembly-CSharp
-          m_MethodName: onHover
+          m_MethodName: OnHover
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -265,7 +265,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 244394096878973365}
           m_TargetAssemblyTypeName: ButtonHover, Assembly-CSharp
-          m_MethodName: offHover
+          m_MethodName: OffHover
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

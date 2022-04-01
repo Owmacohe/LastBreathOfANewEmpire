@@ -8,12 +8,12 @@ public class ButtonHover : MonoBehaviour
     [SerializeField] Sprite def;
     [SerializeField] Sprite hov;
 
-    public void onHover()
+    public void OnHover()
     {
         GetComponentInChildren<Image>().sprite = hov;
     }
 
-    public void offHover()
+    public void OffHover()
     {
         GetComponentInChildren<Image>().sprite = def;
     }

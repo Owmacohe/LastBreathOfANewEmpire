@@ -8,18 +8,21 @@ public class CameraTilt : MonoBehaviour
     [SerializeField] float tiltAmount;
     [SerializeField] LayerMask layer;
 
+    Camera mainCamera;
     float rotX, rotY;
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Confined;
+
+        mainCamera = Camera.main;
     }
 
     private void Update()
     {
         if (isTilting)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, 50, layer))
