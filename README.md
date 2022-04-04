@@ -109,3 +109,21 @@
 6. *Unrelated:* Would you like to write a dialogue interaction? I’ll put it in the game if you send me one.
 
 ## Results from playtesting - Round 2
+
+### Main issues
+- Choices aren't impactful upon gameplay
+- No proper "endings"
+- No narrative resolution for the _Raggedy protesters_ interaction
+- Resources can't be used to any effect
+- Could be more hints to specific important happenings in the world
+- Sound effects to be a bit more meaningful and more muffled
+
+### Main enjoyments
+- Sound effects are soothing
+- Objective is clear
+
+### Improvements to be made
+- Add a recurring character?
+- Add a robber character?
+- More sound effects
+- Add a dialogue with an option to adopt a pet?
