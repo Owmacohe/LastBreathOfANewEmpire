@@ -1,6 +1,4 @@
--inf -inf -inf
-inf inf inf
-none
+0 0 0
 ---
 0
 Greetings, fellow civilian. How do you do today in our fine sector?

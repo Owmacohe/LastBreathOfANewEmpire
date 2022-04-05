@@ -1,6 +1,4 @@
--inf -inf -inf
-inf inf inf
-none
+0 0 0
 ---
 0
 Do you have a moment to talk about an <wave a=0.5>exciting new petition</wave>?

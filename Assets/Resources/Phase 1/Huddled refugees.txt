@@ -1,6 +1,4 @@
--inf -inf -inf
-inf inf inf
-none
+0 0 0
 ---
 0
 I'm so glad we passed through here! We're in desperate need of rations for our journey.

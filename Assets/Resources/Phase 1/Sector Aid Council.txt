@@ -1,6 +1,4 @@
--inf -inf -inf
-inf inf inf
-none
+0 0 0
 ---
 0
 Good afternoon. We at the Aid Council are going planet from planet accepting food donations.

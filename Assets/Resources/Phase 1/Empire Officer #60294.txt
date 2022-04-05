@@ -1,6 +1,4 @@
--inf -inf -inf
-inf inf inf
-none
+0 0 0
 ---
 0
 Hey you, shopkeeper! Your tax is due to the <shake a=0.3>Empire</shake>. Hand it over!

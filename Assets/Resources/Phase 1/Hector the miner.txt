@@ -1,6 +1,4 @@
--inf -inf -inf
-inf inf inf
-none
+0 0 0
 ---
 0
 We are miners from the far star clusters. We need ores to smelt into weapons.

@@ -32,8 +32,7 @@ public class GameController : MonoBehaviour
     struct Convo
     {
         public string Name;
-        public float[,] OpinionRequirements;
-        public List<string> ConvoRequirements;
+        public int[] QuestlineRequirements;
         public List<ConvoNode> Nodes;
     }
     TextAsset[] conversationFiles;
@@ -42,6 +41,8 @@ public class GameController : MonoBehaviour
     TMP_Text[] choices;
     List<string> completedConversations;
     int[] opinions; // refugees, Empire, revolution
+
+    int[] questLines; // refugees, Empire, revolution
 
     int credits, rations, ammo;
     float ores;
@@ -104,6 +105,8 @@ public class GameController : MonoBehaviour
         ores = 30;
 
         opinions = new int[3];
+        
+        questLines = new int[3];
 
         dayPopupCount = 1;
 
@@ -143,35 +146,19 @@ public class GameController : MonoBehaviour
             Convo newConvo;
             newConvo.Name = conversationFiles[f].name;
             newConvo.Nodes = new List<ConvoNode>();
-            newConvo.OpinionRequirements = new float[3, 2];
-            newConvo.ConvoRequirements = new List<string>();
+            newConvo.QuestlineRequirements = new int[3];
             
             conversations.Add(newConvo);
 
             for (int i = 0; i < split.Length; i++)
             {
-                if (i < 3)
+                if (i == 0)
                 {
-                    if (i < 2)
-                    {
-                        string[] tempSplit = split[i].Split(' ');
-                        
-                        newConvo.OpinionRequirements[0, i] = ParseParam(tempSplit[0].Trim());
-                        newConvo.OpinionRequirements[1, i] = ParseParam(tempSplit[1].Trim());
-                        newConvo.OpinionRequirements[2, i] = ParseParam(tempSplit[2].Trim());
-                    }
-                    else
-                    {
-                        string[] tempSplit = split[i].Split(',');
-                        
-                        if (!tempSplit[0].Trim().Equals("none"))
-                        {
-                            foreach (string req in tempSplit)
-                            {
-                                newConvo.ConvoRequirements.Add(req.Trim());
-                            }
-                        }
-                    }
+                    string[] tempSplit = split[i].Split(' ');
+                    
+                    newConvo.QuestlineRequirements[0] = int.Parse(tempSplit[0].Trim());
+                    newConvo.QuestlineRequirements[1] = int.Parse(tempSplit[1].Trim());
+                    newConvo.QuestlineRequirements[2] = int.Parse(tempSplit[2].Trim());
                 }
                 else
                 {
@@ -247,22 +234,6 @@ public class GameController : MonoBehaviour
         }
 
         return true;
-    }
-
-    float ParseParam(string p)
-    {
-        if (p.Equals("-inf"))
-        {
-            return -Mathf.Infinity;
-        }
-        else if (p.Equals("inf"))
-        {
-            return Mathf.Infinity;
-        }
-        else
-        {
-            return float.Parse(p);
-        }
     }
 
     private void FixedUpdate()
@@ -354,40 +325,12 @@ public class GameController : MonoBehaviour
         conversationNum = Random.Range(0, conversations.Count);
         int count = 0;
         
-        bool isConvoReqValid = true;
-        
-        if (conversations[conversationNum].ConvoRequirements.Count > 0)
-        {
-            foreach (string req in conversations[conversationNum].ConvoRequirements)
-            {
-                if (!completedConversations.Contains(req))
-                {
-                    isConvoReqValid = false;
-                    break;
-                }
-            }
-        }
-        
-        while (!(isConvoReqValid &&
-            opinions[0] >= conversations[conversationNum].OpinionRequirements[0, 0] && opinions[0] <= conversations[conversationNum].OpinionRequirements[0, 1] &&
-            opinions[1] >= conversations[conversationNum].OpinionRequirements[1, 0] && opinions[1] <= conversations[conversationNum].OpinionRequirements[1, 1] &&
-            opinions[2] >= conversations[conversationNum].OpinionRequirements[2, 0] && opinions[2] <= conversations[conversationNum].OpinionRequirements[2, 1]))
+        while (!(
+            questLines[0] >= conversations[conversationNum].QuestlineRequirements[0] &&
+            questLines[1] >= conversations[conversationNum].QuestlineRequirements[1] &&
+            questLines[2] >= conversations[conversationNum].QuestlineRequirements[2]))
         {
             conversationNum = Random.Range(0, conversations.Count);
-            
-            isConvoReqValid = true;
-            
-            if (conversations[conversationNum].ConvoRequirements.Count > 0)
-            {
-                foreach (string req in conversations[conversationNum].ConvoRequirements)
-                {
-                    if (!completedConversations.Contains(req))
-                    {
-                        isConvoReqValid = false;
-                        break;
-                    }
-                }
-            }
 
             count++;
 
@@ -428,21 +371,26 @@ public class GameController : MonoBehaviour
 
     public void MakeChoice(int choiceNum)
     {
-        credits += conversations[conversationNum].Nodes[conversationNodeNum].InventoryChanges[choiceNum, 0];
-        rations += conversations[conversationNum].Nodes[conversationNodeNum].InventoryChanges[choiceNum, 1];
-        ammo += conversations[conversationNum].Nodes[conversationNodeNum].InventoryChanges[choiceNum, 2];
-        ores += conversations[conversationNum].Nodes[conversationNodeNum].InventoryChanges[choiceNum, 3];
+        Convo tempConvo = conversations[conversationNum];
+        ConvoNode tempConvoNode = tempConvo.Nodes[conversationNodeNum];
+        
+        credits += tempConvoNode.InventoryChanges[choiceNum, 0];
+        rations += tempConvoNode.InventoryChanges[choiceNum, 1];
+        ammo += tempConvoNode.InventoryChanges[choiceNum, 2];
+        ores += tempConvoNode.InventoryChanges[choiceNum, 3];
         UpdateInventory();
 
-        opinions[0] += conversations[conversationNum].Nodes[conversationNodeNum].OpinionChanges[choiceNum, 0];
-        opinions[1] += conversations[conversationNum].Nodes[conversationNodeNum].OpinionChanges[choiceNum, 1];
-        opinions[2] += conversations[conversationNum].Nodes[conversationNodeNum].OpinionChanges[choiceNum, 2];
+        opinions[0] += tempConvoNode.OpinionChanges[choiceNum, 0];
+        opinions[1] += tempConvoNode.OpinionChanges[choiceNum, 1];
+        opinions[2] += tempConvoNode.OpinionChanges[choiceNum, 2];
+        
+        CheckQuestlines(tempConvo, tempConvoNode, choiceNum);
 
         bool hasFound = false;
 
-        for (int i = 0; i < conversations[conversationNum].Nodes.Count; i++)
+        for (int i = 0; i < tempConvo.Nodes.Count; i++)
         {
-            if (conversations[conversationNum].Nodes[i].State.Trim().Equals(conversations[conversationNum].Nodes[conversationNodeNum].State.Trim() + "_" + choiceNum))
+            if (tempConvo.Nodes[i].State.Trim().Equals(tempConvoNode.State.Trim() + "_" + choiceNum))
             {
                 conversationNodeNum = i;
                 hasFound = true;
@@ -460,16 +408,25 @@ public class GameController : MonoBehaviour
         }
     }
 
+    void CheckQuestlines(Convo c, ConvoNode cn, int choice)
+    {
+        if (c.Name.Equals("Raggedy protesters") && cn.State.Equals("0_0_0") && choice == 0)
+        {
+            questLines[2]++;
+        }
+    }
+
     private void EndConversation()
     {
-        ConvoNode convoTemp = conversations[conversationNum].Nodes[conversationNodeNum];
+        Convo tempConvo = conversations[conversationNum];
+        ConvoNode tempConvoNode = tempConvo.Nodes[conversationNodeNum];
 
-        if (convoTemp.Responses.Count == 0 && convoTemp.InventoryChanges.Length > 0)
+        if (tempConvoNode.Responses.Count == 0 && tempConvoNode.InventoryChanges.Length > 0)
         {
-            credits += conversations[conversationNum].Nodes[conversationNodeNum].InventoryChanges[0, 0];
-            rations += conversations[conversationNum].Nodes[conversationNodeNum].InventoryChanges[0, 1];
-            ammo += conversations[conversationNum].Nodes[conversationNodeNum].InventoryChanges[0, 2];
-            ores += conversations[conversationNum].Nodes[conversationNodeNum].InventoryChanges[0, 3];
+            credits += tempConvoNode.InventoryChanges[0, 0];
+            rations += tempConvoNode.InventoryChanges[0, 1];
+            ammo += tempConvoNode.InventoryChanges[0, 2];
+            ores += tempConvoNode.InventoryChanges[0, 3];
             UpdateInventory();
         }
 
@@ -480,8 +437,8 @@ public class GameController : MonoBehaviour
 
         NPCDialogueText.text = "NPC Dialogue";
 
-        completedConversations.Add(conversations[conversationNum].Name);
-        conversations.Remove(conversations[conversationNum]);
+        completedConversations.Add(tempConvo.Name);
+        conversations.Remove(tempConvo);
         
         bool isValid = LoadConversations();
         
