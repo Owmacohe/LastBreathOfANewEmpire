@@ -39,10 +39,10 @@ public class GameController : MonoBehaviour
     List<Convo> conversations;
     int conversationNum, conversationNodeNum;
     TMP_Text[] choices;
-    List<string> completedConversations;
+    int completedConversations, totalConversations;
     int[] opinions; // refugees, Empire, revolution
 
-    int[] questLines; // refugees, Empire, revolution
+    int[] questlines; // refugees, Empire, revolution
 
     int credits, rations, ammo;
     float ores;
@@ -52,7 +52,7 @@ public class GameController : MonoBehaviour
     GameObject homeMarker;
     
     [HideInInspector] public string playerName;
-    GameObject playerUI, NPCUI, starshipObject;
+    GameObject playerUI, NPCUI, starshipObject, summaryParent;
     
     TextAnimator dayCounter;
     int dayCount, dayPopupCount;
@@ -92,7 +92,7 @@ public class GameController : MonoBehaviour
     };
     Sprite[] portraits;
     
-    private void Start()
+     void Start()
     {
         playerUI = GameObject.FindGameObjectWithTag("Player");
         playerUI.SetActive(false);
@@ -106,7 +106,7 @@ public class GameController : MonoBehaviour
 
         opinions = new int[3];
         
-        questLines = new int[3];
+        questlines = new int[3];
 
         dayPopupCount = 1;
 
@@ -127,15 +127,14 @@ public class GameController : MonoBehaviour
     {
         phaseCount++;
         
-        conversations = new List<Convo>();
-        completedConversations = new List<string>();
-
         string folderName = "Phase " + phaseCount;
 
         if (!Directory.Exists(Application.dataPath + "/Resources/" + folderName))
         {
             return false;
         }
+        
+        conversations = new List<Convo>();
         
         conversationFiles = Resources.LoadAll<TextAsset>(folderName);
 
@@ -233,24 +232,13 @@ public class GameController : MonoBehaviour
             }
         }
 
+        totalConversations += conversations.Count;
+
         return true;
     }
 
-    private void FixedUpdate()
+     void FixedUpdate()
     {
-        if (hasStartedGame)
-        {
-            if (isOpen && Random.Range(0, 200) <= 1)
-            {
-                CreateStarship();
-            }
-        }
-
-        if (homeMarker != null)
-        {
-            homeMarker.transform.rotation = Quaternion.identity;
-        }
-
         if (dayCounter == null)
         {
             try
@@ -259,12 +247,33 @@ public class GameController : MonoBehaviour
             }
             catch { }
         }
+        
+        if (summaryParent == null)
+        {
+            try
+            {
+                LoadGameSummary();
+            }
+            catch { }
+        }
+        
+        if (homeMarker != null)
+        {
+            homeMarker.transform.rotation = Quaternion.identity;
+        }
+        
+        if (hasStartedGame)
+        {
+            if (isOpen && Random.Range(0, 200) <= 1)
+            {
+                CreateStarship();
+            }
+        }
     }
 
     public void StartTutorial()
     {
         LoadHome();
-        //StartCoversation();
     }
 
     public void StartGame()
@@ -273,7 +282,6 @@ public class GameController : MonoBehaviour
         
         dayCounter.SetText("<fade d=3><wave>Day " + dayPopupCount + "</wave></fade>", false);
         
-
         isOpen = true;
         hasStartedGame = true;
     }
@@ -309,7 +317,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void CreateStarship()
+     void CreateStarship()
     {
         isOpen = false;
 
@@ -322,37 +330,7 @@ public class GameController : MonoBehaviour
         isOpen = false;
         conversationNodeNum = 0;
         
-        conversationNum = Random.Range(0, conversations.Count);
-        int count = 0;
-        
-        while (!(
-            questLines[0] >= conversations[conversationNum].QuestlineRequirements[0] &&
-            questLines[1] >= conversations[conversationNum].QuestlineRequirements[1] &&
-            questLines[2] >= conversations[conversationNum].QuestlineRequirements[2]))
-        {
-            conversationNum = Random.Range(0, conversations.Count);
-
-            count++;
-
-            if (count >= conversations.Count)
-            {
-                bool isValid = LoadConversations();
-                
-                print(conversations.Count);
-                
-                if (isValid && conversations.Count > 0)
-                {
-                    conversationNum = Random.Range(0, conversations.Count);
-                    count = 0;
-                }
-                else
-                {
-                    hasStartedGame = false;
-                    GetComponent<SceneController>().Load("End");
-                    return;
-                }
-            }
-        }
+        conversationNum = NextConversationNum();
 
         playerUI.SetActive(true);
         playerNameText.text = playerName;
@@ -367,6 +345,46 @@ public class GameController : MonoBehaviour
         }
 
         LoadChoices();
+    }
+
+    int NextConversationNum()
+    {
+        int temp = Random.Range(0, conversations.Count);
+        
+        List<int> checkedConversations = new List<int>();
+        checkedConversations.Add(temp);
+        
+        while (!(
+           questlines[0] >= conversations[temp].QuestlineRequirements[0] &&
+           questlines[1] >= conversations[temp].QuestlineRequirements[1] &&
+           questlines[2] >= conversations[temp].QuestlineRequirements[2]))
+        {
+            temp = Random.Range(0, conversations.Count);
+
+            if (checkedConversations.Count >= conversations.Count)
+            {
+                bool isValid = LoadConversations();
+
+                if (isValid && conversations.Count > 0)
+                {
+                    temp = Random.Range(0, conversations.Count);
+                    return temp;
+                }
+                else
+                {
+                    hasStartedGame = false;
+                    GetComponent<SceneController>().Load("End");
+                    return -1;
+                }
+            }
+            
+            if (!checkedConversations.Contains(temp))
+            {
+                checkedConversations.Add(temp);
+            }
+        }
+
+        return temp;
     }
 
     public void MakeChoice(int choiceNum)
@@ -410,14 +428,33 @@ public class GameController : MonoBehaviour
 
     void CheckQuestlines(Convo c, ConvoNode cn, int choice)
     {
-        if (c.Name.Equals("Raggedy protesters") && cn.State.Equals("0_0_0") && choice == 0)
+        string n = c.Name.Trim();
+        string s = cn.State.Trim();
+
+        if (
+            (n.Equals("Sector Aid Council") && choice == 1 && (s.Equals("0_2_0") || s.Equals("0_2_1") || s.Equals("0_0_0_0") || s.Equals("0_0_0_1") || s.Equals("0_0_1_0") || s.Equals("0_0_1_1") || s.Equals("0_1_1_0") || s.Equals("0_1_1_1"))) ||
+            n.Equals("Aid Council Volunteer") && choice == 1 && s.Equals("0"))
         {
-            questLines[2]++;
+            questlines[0]++;
+        }
+        else if (
+            (n.Equals("Empire franchisee") && ((choice == 0 && (s.Equals("0_1") || s.Equals("0_0_0"))) || (choice == 1 && (s.Equals("0_1_1") || s.Equals("0_0_0_1"))))) ||
+            n.Equals("Empire transport") && ((choice == 0 && (s.Equals("0_1_0") || s.Equals("0_0_0_0"))) || (choice == 1 && (s.Equals("0_0") || s.Equals("0_1") || s.Equals("0_0_0")))))
+        {
+            questlines[1]++;
+        }
+        else if (
+            (n.Equals("Raggedy protesters") && choice == 0 && s.Equals("0_0_0")) ||
+            (n.Equals("Sheltering protesters") && choice == 0 && (s.Equals("0_0_2") || s.Equals("0_1_1") || s.Equals("0_0_0_0") || s.Equals("0_0_1_0"))))
+        {
+            questlines[2]++;
         }
     }
 
-    private void EndConversation()
+     void EndConversation()
     {
+        //print("Questlines: " + questlines[0] + " " + questlines[1] + " " + questlines[2]);
+        
         Convo tempConvo = conversations[conversationNum];
         ConvoNode tempConvoNode = tempConvo.Nodes[conversationNodeNum];
 
@@ -437,13 +474,18 @@ public class GameController : MonoBehaviour
 
         NPCDialogueText.text = "NPC Dialogue";
 
-        completedConversations.Add(tempConvo.Name);
+        completedConversations++;
         conversations.Remove(tempConvo);
-        
-        bool isValid = LoadConversations();
-        
-        if (isValid && conversations.Count > 0)
+
+        if (conversations.Count == 0)
         {
+            LoadConversations();
+        }
+        
+        if (conversations.Count > 0)
+        {
+            NextConversationNum();
+            
             dayCount++;
             
             if (dayCount % 3 == 0)
@@ -459,18 +501,25 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void LoadChoices()
+    void LoadChoices()
     {
-        NPCDialogueText.text = conversations[conversationNum].Nodes[conversationNodeNum].NPCDialogue;
-        List<string> tempChoices = conversations[conversationNum].Nodes[conversationNodeNum].Responses;
+        Convo tempConvo = conversations[conversationNum];
+        ConvoNode tempConvoNode = tempConvo.Nodes[conversationNodeNum];
+    
+        NPCDialogueText.text = CheckAndColourDialogue(tempConvoNode.NPCDialogue);
+        List<string> tempChoices = tempConvoNode.Responses;
 
         for (int i = 0; i < 3; i++)
         {
-            if (i <= tempChoices.Count - 1)
+            if (
+                i <= tempChoices.Count - 1 &&
+                credits + tempConvoNode.InventoryChanges[i, 0] >= 0 &&
+                rations + tempConvoNode.InventoryChanges[i, 1] >= 0 &&
+                ammo + tempConvoNode.InventoryChanges[i, 2] >= 0 &&
+                ores + tempConvoNode.InventoryChanges[i, 3] >= 0)
             {
                 choices[i].transform.parent.gameObject.SetActive(true);
-                string choiceText = tempChoices[i];
-                choices[i].text = choiceText;
+                choices[i].text = CheckAndColourDialogue(tempChoices[i]);
             }
             else
             {
@@ -484,7 +533,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void UpdateInventory()
+    void UpdateInventory()
     {
         creditsText.text = ColourString("Credits ", StringColours.Yellow) + "$" + credits;
         rationsText.text = ColourString("Rations ", StringColours.Pink) + rations + " cases";
@@ -492,8 +541,106 @@ public class GameController : MonoBehaviour
         oresText.text = ColourString("Ores ", StringColours.Green) + ores + "kg";
     }
 
-    private enum StringColours { Yellow, Pink, Orange, Green };
-    private string ColourString(string message, StringColours colour)
+    string CheckAndColourDialogue(string message)
+    {
+        string[] split = message.Split(' ');
+
+        for (int i = 0; i < split.Length; i++)
+        {
+            string word = split[i].Trim().ToLower();
+
+            if (word.Length >= 2 && word[word.Length - 1].Equals('.') || word[word.Length - 1].Equals(',') || word[word.Length - 1].Equals('!') || word[word.Length - 1].Equals('?'))
+            {
+                word = word.Substring(0, word.Length - 1);
+            }
+            
+            switch (word)
+            {
+                case "credit":
+                case "credits":
+                    split[i] = ColourString(split[i], StringColours.Yellow);
+                    break;
+                case "ration":
+                case "rations":
+                    split[i] = ColourString(split[i], StringColours.Pink);
+                    break;
+                case "ammo":
+                    split[i] = ColourString(split[i], StringColours.Orange);
+                    break;
+                case "ore":
+                case "ores":
+                    split[i] = ColourString(split[i], StringColours.Green);
+                    break;
+            }
+        }
+
+        string temp = "";
+
+        foreach (string j in split)
+        {
+            temp += j + " ";
+        }
+
+        return temp;
+    }
+
+    void LoadGameSummary()
+    {
+        summaryParent = GameObject.FindGameObjectWithTag("Summary");
+
+        string stats =
+            ColourString("Conversations completed: ", StringColours.Green) + completedConversations + "/" + totalConversations + "\n" +
+            ColourString("Refugee standing: ", StringColours.Green) + opinions[0] + "\n" +
+            ColourString("Empire standing: ", StringColours.Green) + opinions[1] + "\n" +
+            ColourString("Resistance standing: ", StringColours.Green) + opinions[2] + "\n";
+
+        string achievements = ColourString("Achievements:", StringColours.Pink);
+
+        for (int i = 0; i < questlines[0]; i++)
+        {
+            switch (i)
+            {
+                case 0:
+                    achievements += "\nConverted part of your shop into a soup kitchen";
+                    break;
+                case 1:
+                    achievements += "\nAgreed to help the soup kitchen in future matters";
+                    break;
+            }
+        }
+        
+        for (int j = 0; j < questlines[1]; j++)
+        {
+            switch (j)
+            {
+                case 0:
+                    achievements += "\nSold your shop to the Empire";
+                    break;
+                case 1:
+                    achievements += "\nWillingly stored guns in your shop for the Empire";
+                    break;
+            }
+        }
+        
+        for (int k = 0; k < questlines[2]; k++)
+        {
+            switch (k)
+            {
+                case 0:
+                    achievements += "\nSheltered Resistance protesters";
+                    break;
+                case 1:
+                    achievements += "\nAgreed to let a Resistance politician set up in your shop";
+                    break;
+            }
+        }
+
+        summaryParent.transform.GetChild(1).gameObject.GetComponent<TMP_Text>().text = stats;
+        summaryParent.transform.GetChild(2).gameObject.GetComponent<TMP_Text>().text = achievements;
+    }
+
+    enum StringColours { Yellow, Pink, Orange, Green };
+    string ColourString(string message, StringColours colour)
     {
         string code = "";
 

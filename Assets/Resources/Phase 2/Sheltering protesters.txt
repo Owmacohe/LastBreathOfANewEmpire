@@ -1,0 +1,168 @@
+﻿0 0 1
+---
+0
+Hey again shopkeep. Thanks for letting us lay low here for a while.
+Just wanted to make sure you folks were going to be alright.
+Fine, whatever. Just don't let it happen again.
+===
+0 0 0 0
+0 0 0 0
+~~~
+0 0 5
+0 0 0
+---
+0_0
+We really appreciate it! I'm sure you've heard the <wiggle a=0.3>horror stories</wiggle> of resistance members getting picked up by the <shake a=0.3>Empire</shake>.
+No, I haven't.
+That's just fear-mongering.
+I have. The Empire is ruthless.
+===
+0 0 0 0
+0 0 0 0
+0 0 0 0
+~~~
+0 0 0
+0 0 0
+0 0 0
+---
+0_1
+Yeah, of course. Promise. You're not going to report us, are you?
+Not this time.
+Of course not!
+===
+0 0 0 0
+0 0 0 0
+~~~
+0 0 -5
+0 0 5
+---
+0_0_0
+You haven't? I'm surprised. I've heard rumours of arbitrary detention, solitary confinement, torture even. The works.
+Well I'm glad that you're alright.
+Come on, you don't believe that.
+===
+0 0 0 0
+0 0 0 0
+~~~
+0 0 0
+0 0 0
+---
+0_0_1
+It isn't. The world's a lot scarier out there than you think.
+I'm glad I have my shop.
+Whatever.
+===
+0 0 0 0
+0 0 0 0
+~~~
+0 0 0
+0 0 0
+---
+0_0_2
+They sure are. Speaking of politics, is there a chance we could introduce you to a friend of ours? She's trying to get involved in the upcoming election, and this would be a perfect place for a campaign office.
+Absolutely, my shop is open to all you resistance members.
+No, sorry. All this Empire talk is giving me cold feet.
+===
+0 0 0 0
+0 0 0 0
+~~~
+0 0 5
+0 0 -5
+---
+0_1_0
+Jeez, okay. We're getting out of here. No need to be hostile.
+===
+~~~
+---
+0_1_1
+We really appreciate it. Speaking of politics, is there a chance we could introduce you to a friend of ours? She's trying to get involved in the upcoming election, and this would be a perfect place for a campaign office.
+Absolutely, my shop is open to all you resistance members.
+No, sorry. All this Empire talk is giving me cold feet.
+===
+0 0 0 0
+0 0 0 0
+~~~
+0 0 5
+0 0 -5
+---
+0_0_0_0
+Us too. Speaking of politics, is there a chance we could introduce you to a friend of ours? She's trying to get involved in the upcoming election, and this would be a perfect place for a campaign office.
+Absolutely, my shop is open to all you resistance members.
+No, sorry. All this Empire talk is giving me cold feet.
+===
+0 0 0 0
+0 0 0 0
+~~~
+0 0 5
+0 0 -5
+---
+0_0_0_1
+Of course we do. We've lost friends to the <shake a=0.3>Empire</shake>. Good friends. Anyway, we should be leaving while the coast is still clear. Please, take these rations as a sign of our thanks.
+===
+0 10 0 0
+~~~
+0 0 0
+---
+0_0_1_0
+Speaking of politics, is there a chance we could introduce you to a friend of ours? She's trying to get involved in the upcoming election, and this would be a perfect place for a campaign office.
+Absolutely, my shop is open to all you resistance members.
+No, sorry. All this Empire talk is giving me cold feet.
+===
+0 0 0 0
+0 0 0 0
+~~~
+0 0 5
+0 0 -5
+---
+0_0_1_1
+Anyway, we should be leaving while the coast is still clear. Stay well.
+===
+~~~
+---
+0_0_2_0
+Really? <wave>That's so kind!</wave> We'll be sure to drop back in soon to introduce you to our candidate. Please, take these rations as a sign of our thanks.
+===
+0 10 0 0
+~~~
+0 0 5
+---
+0_0_2_1
+That's understandable. We should be leaving while the coast is still clear. Stay well.
+===
+~~~
+---
+0_1_1_0
+Really? <wave>That's so kind!</wave> We'll be sure to drop back in soon to introduce you to our candidate. Please, take these rations as a sign of our thanks.
+===
+0 10 0 0
+~~~
+0 0 5
+---
+0_1_1_1
+That's understandable. We should be leaving while the coast is still clear. Stay well.
+===
+~~~
+---
+0_0_0_0_0
+Really? <wave>That's so kind!</wave> We'll be sure to drop back in soon to introduce you to our candidate. Please, take these rations as a sign of our thanks.
+===
+0 10 0 0
+~~~
+0 0 5
+---
+0_0_0_0_1
+That's understandable. We should be leaving while the coast is still clear. Stay well.
+===
+~~~
+---
+0_0_1_0_0
+Really? <wave>That's so kind!</wave> We'll be sure to drop back in soon to introduce you to our candidate. Please, take these rations as a sign of our thanks.
+===
+0 10 0 0
+~~~
+0 0 5
+---
+0_0_1_0_1
+That's understandable. We should be leaving while the coast is still clear. Stay well.
+===
+~~~

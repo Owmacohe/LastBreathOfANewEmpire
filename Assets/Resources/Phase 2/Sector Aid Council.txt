@@ -1,0 +1,294 @@
+﻿0 0 0
+---
+0
+Good afternoon. We at the Aid Council are going planet from planet accepting food donations.
+Why do you need rations?
+Will you take ammo?
+Sure, I'd be happy to donate.
+===
+0 0 0 0
+0 0 0 0
+0 -5 0 0
+~~~
+0 0 0
+0 0 0
+5 0 0
+---
+0_0
+Places all over the sector have fallen on hard times due to Empire subjugation and harsh mining conditions. Even a small contribution helps.
+I can spare some rations.
+Take as much as you'd like.
+I don't have to give anything to you.
+===
+0 -5 0 0
+0 -10 0 0
+0 0 0 0
+~~~
+5 0 0
+10 0 0
+0 0 0
+---
+0_1
+We're a <wave a=0.5>non-profit</wave>. I don't think that would be proper...
+C'mon, I can't get rid of anything else!
+Alright, I can spare some rations then.
+===
+0 0 -5 0
+0 -5 0 0
+~~~
+0 0 0
+5 0 0
+---
+0_2
+Your generosity is warmly welcomed. <wave a=0.5>Thank you!</wave> You don't suppose you'd be interested in converting part of your shop into a soup kitchen, would you?
+Actually, I'd love to. We common folk need to take care of our own.
+How much would it cost me?
+Absolutely not.
+===
+0 0 0 0
+0 0 0 0
+0 0 0 0
+~~~
+5 0 0
+0 0 0
+-5 0 0
+---
+0_0_0
+Your generosity is warmly welcomed. <wave a=0.5>Thank you!</wave> You don't suppose you'd be interested in converting part of your shop into a soup kitchen, would you?
+Actually, I'd love to. We common folk need to take care of our own.
+How much would it cost me?
+Absolutely not.
+===
+0 0 0 0
+0 0 0 0
+0 0 0 0
+~~~
+5 0 0
+0 0 0
+-5 0 0
+---
+0_0_1
+Truly? Thank you so much, friend. We'll remember this. You don't suppose you'd be interested in converting part of your shop into a soup kitchen, would you?
+Actually, I'd love to. We common folk need to take care of our own.
+How much would it cost me?
+Absolutely not.
+===
+0 0 0 0
+0 0 0 0
+0 0 0 0
+~~~
+5 0 0
+0 0 0
+-5 0 0
+---
+0_0_2
+No, you don't. Goodbye.
+===
+~~~
+---
+0_1_0
+Suppose we can sell these to buy rations. Thanks, I guess.
+===
+~~~
+---
+0_1_1
+Your generosity is warmly welcomed. <wave a=0.5>Thank you!</wave> You don't suppose you'd be interested in converting part of your shop into a soup kitchen, would you?
+Actually, I'd love to. We common folk need to take care of our own.
+How much would it cost me?
+Absolutely not.
+===
+0 0 0 0
+0 0 0 0
+0 0 0 0
+~~~
+5 0 0
+0 0 0
+-5 0 0
+---
+0_2_0
+I'm so glad to hear that. The setup will only require a small credit fee from you up front, and the Aid Council will take it from there.
+I can't pay any more than I already have, sorry.
+Sounds good to me.
+===
+0 0 0 0
+0 0 0 0
+~~~
+-5 0 0
+5 0 0
+---
+0_2_1
+The setup will only require a small credit fee from you up front, and the Aid Council will take it from there.
+I can't pay any more than I already have, sorry.
+Sounds good to me.
+===
+0 0 0 0
+-20 0 0 0
+~~~
+-5 0 0
+5 0 0
+---
+0_2_2
+Well, that's a shame, but thank you for your contribution nonetheless!
+===
+~~~
+---
+0_0_0_0
+I'm so glad to hear that. The setup will only require a small credit fee from you up front, and the Aid Council will take it from there.
+I can't pay any more than I already have, sorry.
+Sounds good to me.
+===
+0 0 0 0
+-20 0 0 0
+~~~
+-5 0 0
+5 0 0
+---
+0_0_0_1
+The setup will only require a small credit fee from you up front, and the Aid Council will take it from there.
+I can't pay any more than I already have, sorry.
+Sounds good to me.
+===
+0 0 0 0
+-20 0 0 0
+~~~
+-5 0 0
+5 0 0
+---
+0_0_0_2
+Well, that's a shame, but thank you for your contribution nonetheless!
+===
+~~~
+---
+0_0_1_0
+I'm so glad to hear that. The setup will only require a small credit fee from you up front, and the Aid Council will take it from there.
+I can't pay any more than I already have, sorry.
+Sounds good to me.
+===
+0 0 0 0
+-20 0 0 0
+~~~
+-5 0 0
+5 0 0
+---
+0_0_1_1
+The setup will only require a small credit fee from you up front, and the Aid Council will take it from there.
+I can't pay any more than I already have, sorry.
+Sounds good to me.
+===
+0 0 0 0
+-20 0 0 0
+~~~
+-5 0 0
+5 0 0
+---
+0_0_1_2
+Well, that's a shame, but thank you for your contribution nonetheless!
+===
+~~~
+---
+0_1_1_0
+I'm so glad to hear that. The setup will only require a small credit fee from you up front, and the Aid Council will take it from there.
+I can't pay any more than I already have, sorry.
+Sounds good to me.
+===
+0 0 0 0
+-20 0 0 0
+~~~
+-5 0 0
+5 0 0
+---
+0_1_1_1
+The setup will only require a small credit fee from you up front, and the Aid Council will take it from there.
+I can't pay any more than I already have, sorry.
+Sounds good to me.
+===
+0 0 0 0
+-20 0 0 0
+~~~
+-5 0 0
+5 0 0
+---
+0_1_1_2
+Well, that's a shame, but thank you for your contribution nonetheless!
+===
+~~~
+---
+0_2_0_0
+Well, that's a shame, but thank you for your contribution nonetheless!
+===
+~~~
+---
+0_2_0_1
+Alright then. I'll collect the deposit of 20 credits, and we'll be back soon to renovate and prepare.
+===
+~~~
+---
+0_2_1_0
+Well, that's a shame, but thank you for your contribution nonetheless!
+===
+~~~
+---
+0_2_1_1
+Alright then. I'll collect the deposit of 20 credits, and we'll be back soon to renovate and prepare.
+===
+~~~
+---
+0_0_0_0_0
+Well, that's a shame, but thank you for your contribution nonetheless!
+===
+~~~
+---
+0_0_0_0_1
+Alright then. I'll collect the deposit of 20 credits, and we'll be back soon to renovate and prepare.
+===
+~~~
+---
+0_0_0_1_0
+Well, that's a shame, but thank you for your contribution nonetheless!
+===
+~~~
+---
+0_0_0_1_1
+Alright then. I'll collect the deposit of 20 credits, and we'll be back soon to renovate and prepare.
+===
+~~~
+---
+0_0_1_0_0
+Well, that's a shame, but thank you for your contribution nonetheless!
+===
+~~~
+---
+0_0_1_0_1
+Alright then. I'll collect the deposit of 20 credits, and we'll be back soon to renovate and prepare.
+===
+~~~
+---
+0_0_1_1_0
+Well, that's a shame, but thank you for your contribution nonetheless!
+===
+~~~
+---
+0_0_1_1_1
+Alright then. I'll collect the deposit of 20 credits, and we'll be back soon to renovate and prepare.
+===
+~~~
+---
+0_1_1_0_0
+Well, that's a shame, but thank you for your contribution nonetheless!
+===
+~~~
+---
+0_1_1_0_1
+Alright then. I'll collect the deposit of 20 credits, and we'll be back soon to renovate and prepare.
+===
+~~~
+---
+0_1_1_1_0
+Well, that's a shame, but thank you for your contribution nonetheless!
+===
+~~~
+---
+0_1_1_1_1
+Alright then. I'll collect the deposit of 20 credits, and we'll be back soon to renovate and prepare.
+===
+~~~

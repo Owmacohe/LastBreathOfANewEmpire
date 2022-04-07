@@ -64,10 +64,10 @@ What? No. This is an honest shop!
 0 -10 0
 ---
 0_2_0
-No worries, it's on the <shake a=0.3>Empire</shake>'s bill.
+No worries, it's on the Resistance's bill.
 That'll be 15 credits.
 That'll be 20 credits.
-The Empire? No way, not dealing with you.
+The Resistance? No way, not dealing with you.
 ===
 15 0 0 -10
 20 0 0 -10
@@ -83,10 +83,10 @@ Damn. I must have misheard. You never met me!
 ~~~
 ---
 0_0_0_0
-No worries, it's on the <shake a=0.3>Empire</shake>'s bill.
+No worries, it's on the Resistance's bill.
 That'll be 15 credits.
 That'll be 20 credits.
-The Empire? No way, not dealing with you.
+The Resistance? No way, not dealing with you.
 ===
 15 0 0 -10
 20 0 0 -10
@@ -102,10 +102,10 @@ Damn. I must have misheard. You never met me!
 ~~~
 ---
 0_1_0_0
-No worries, it's on the <shake a=0.3>Empire</shake>'s bill.
+No worries, it's on the Resistance's bill.
 That'll be 15 credits.
 That'll be 20 credits.
-The Empire? No way, not dealing with you.
+The Resistance? No way, not dealing with you.
 ===
 15 0 0 -10
 20 0 0 -10
@@ -121,12 +121,12 @@ Damn. I must have misheard. You never met me!
 ~~~
 ---
 0_2_0_0
-Sounds like a deal! The <shake a=0.3>Empire</shake> thanks you.
+Sounds like a deal! The Resistance thanks you.
 ===
 ~~~
 ---
 0_2_0_1
-That high? Sure, I guess. The <shake a=0.3>Empire</shake> thanks you.
+That high? Sure, I guess. The Resistance thanks you.
 ===
 ~~~
 ---
@@ -136,12 +136,12 @@ Damn. Another political type. You never met me!
 ~~~
 ---
 0_0_0_0_0
-Sounds like a deal! The <shake a=0.3>Empire</shake> thanks you.
+Sounds like a deal! The Resistance thanks you.
 ===
 ~~~
 ---
 0_0_0_0_1
-That high? Sure, I guess. The <shake a=0.3>Empire</shake> thanks you.
+That high? Sure, I guess. The Resistance thanks you.
 ===
 ~~~
 ---
@@ -151,12 +151,12 @@ Damn. Another political type. You never met me!
 ~~~
 ---
 0_1_0_0_0
-Sounds like a deal! The <shake a=0.3>Empire</shake> thanks you.
+Sounds like a deal! The Resistance thanks you.
 ===
 ~~~
 ---
 0_1_0_0_1
-That high? Sure, I guess. The <shake a=0.3>Empire</shake> thanks you.
+That high? Sure, I guess. The Resistance thanks you.
 ===
 ~~~
 ---

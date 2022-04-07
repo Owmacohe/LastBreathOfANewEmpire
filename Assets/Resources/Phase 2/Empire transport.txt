@@ -1,0 +1,140 @@
+﻿0 1 0
+---
+0
+Good afternoon, we're here to deposit some crates for storage on the premises.
+Right, of course.
+Wait, why?
+I'm having second thoughts about this.
+===
+0 0 0 0
+0 0 0 0
+0 0 0 0
+~~~
+0 0 0
+0 0 0
+0 -10 0
+---
+0_0
+These crates contain weapons, which will be used to arm shock troops in the Dust Belt. Please make sure they are kept safely until future collection.
+Weapons? You can't store those here.
+They're in good hands.
+===
+0 0 0 0
+50 0 0 0
+~~~
+0 -5 0
+0 5 0
+---
+0_1
+This establishment is under our jurisdiction. Not long ago, you signed to relinquish full control of all future operations here.
+Can we re-negotiate?
+Right, of course.
+===
+0 0 0 0
+50 0 0 0
+~~~
+0 -5 0
+0 0 0
+---
+0_2
+I see. The matter is not up for debate however. This establishment will be used for storage, and due to your lack of cooperation, you will receive no credit payment.
+===
+~~~
+---
+0_0_0
+This establishment is under our jurisdiction. Not long ago, you signed to relinquish full control of all future operations here.
+Can we re-negotiate?
+Right, of course.
+===
+0 0 0 0
+50 0 0 0
+~~~
+0 -5 0
+0 0 0
+---
+0_0_1
+That's good to know. Here is your credit payment. <bounce>Glory to the Empire!</bounce>
+Glory to the Empire!
+Uh, yeah sure.
+===
+0 0 0 0
+0 0 0 0
+~~~
+0 5 0
+0 0 0
+---
+0_1_0
+Absolutely not. Your contract is legally-binding. Is that a problem?
+Not at all.
+Yeah, it kind of is!
+===
+50 0 0 0
+0 0 0 0
+~~~
+0 0 0
+0 -10 0
+---
+0_1_1
+Here is your credit payment. <bounce>Glory to the Empire!</bounce>
+Glory to the Empire!
+Uh, yeah sure.
+===
+0 0 0 0
+0 0 0 0
+~~~
+0 5 0
+0 0 0
+---
+0_0_0_0
+Absolutely not. Your contract is legally-binding. Is that a problem?
+Not at all.
+Yeah, it kind of is!
+===
+50 0 0 0
+0 0 0 0
+~~~
+0 0 0
+0 -10 0
+---
+0_0_0_1
+Here is your credit payment. <bounce>Glory to the Empire!</bounce>
+Glory to the Empire!
+Uh, yeah sure.
+===
+0 0 0 0
+0 0 0 0
+~~~
+0 5 0
+0 0 0
+---
+0_1_0_0
+Here is your credit payment. <bounce>Glory to the Empire!</bounce>
+Glory to the Empire!
+Uh, yeah sure.
+===
+0 0 0 0
+0 0 0 0
+~~~
+0 5 0
+0 0 0
+---
+0_1_0_1
+I see. The matter is not up for debate however. This establishment will be used for storage, and due to your lack of cooperation, you will receive no credit payment.
+===
+~~~
+---
+0_0_0_0_0
+Here is your credit payment. <bounce>Glory to the Empire!</bounce>
+Glory to the Empire!
+Uh, yeah sure.
+===
+0 0 0 0
+0 0 0 0
+~~~
+0 5 0
+0 0 0
+---
+0_0_0_0_1
+I see. The matter is not up for debate however. This establishment will be used for storage, and due to your lack of cooperation, you will receive no credit payment.
+===
+~~~

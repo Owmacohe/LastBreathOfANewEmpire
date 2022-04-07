@@ -9,6 +9,7 @@ TagManager:
   - Mid
   - Small
   - Days
+  - Summary
   layers:
   - Default
   - TransparentFX

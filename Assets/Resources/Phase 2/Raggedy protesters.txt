@@ -37,12 +37,12 @@ What?
 0 0 0
 ---
 0_2
-Seriously? <wiggle>You suck.</wiggle>
+Seriously? <wiggle a=0.3>You suck.</wiggle>
 ===
 ~~~
 ---
 0_0_0
-The demonstation near the Dust Belt got really out of control. We're just trying to escape the chaos.
+The demonstration near the Dust Belt got really out of control. We're just trying to escape the chaos.
 Well then yeah, you can lay low here for a while.
 I can't have any Empire on my back, sorry.
 If they are, it's probably for a good reason.
@@ -71,10 +71,11 @@ Uh, sorry. Came to the wrong store.
 ~~~
 ---
 0_0_0_0
-Thank you so much! You don't know how much this means. Please, take some credits.
+Thank you so much! You don't know how much this means. Please, take some ores.
 ===
+0 0 0 10
 ~~~
-10 0 0 0
+0 0 0
 ---
 0_0_0_1
 I understand. Guess we'll have to chance it on our own then...

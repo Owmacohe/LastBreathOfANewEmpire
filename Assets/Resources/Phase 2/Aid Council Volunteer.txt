@@ -1,0 +1,33 @@
+﻿1 0 0
+---
+0
+Hello there! Thanks to your kindness, we've just renovated the back side of your store into a functioning soup kitchen.
+That's good, but please stay out of my way.
+I'm glad! Is there anything I can do to help?
+===
+0 0 0 0
+0 0 0 0
+~~~
+-5 0 0
+5 0 0
+---
+0_0
+Right... of course. We'll make sure to do that.
+===
+~~~
+---
+0_1
+Presently, no. But issues always arise, and we'll be sure to contact you should anything happen.
+Sounds good to me.
+Would you like some rations to get the food flowing?
+===
+0 0 0 0
+0 -5 0 0
+~~~
+0 0 0
+10 0 0
+---
+0_1_1
+That would be <wave>delightful</wave>, thank you! I knew we picked the right place to set up the kitchen.
+===
+~~~
