@@ -1,5 +1,5 @@
 # Last Breath Of A New Empire
-*First game prototype and further iteration for my CART 315 class. Please see below for the appropriate playtester questions (round 2).*
+*First game prototype and further iteration for my CART 315 class.*
 
 ## Game features
 

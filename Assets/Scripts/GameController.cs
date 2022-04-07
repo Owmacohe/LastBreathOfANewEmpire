@@ -126,17 +126,17 @@ public class GameController : MonoBehaviour
     bool LoadConversations()
     {
         phaseCount++;
-        
-        string folderName = "Phase " + phaseCount;
 
-        if (!Directory.Exists(Application.dataPath + "/Resources/" + folderName))
+        try
+        {
+            conversationFiles = Resources.LoadAll<TextAsset>("Phase " + phaseCount);
+        }
+        catch
         {
             return false;
         }
         
         conversations = new List<Convo>();
-        
-        conversationFiles = Resources.LoadAll<TextAsset>(folderName);
 
         for (int f = 0; f < conversationFiles.Length; f++)
         {
@@ -344,7 +344,7 @@ public class GameController : MonoBehaviour
             choices[i].transform.parent.gameObject.SetActive(true);
         }
 
-        LoadChoices();
+        LoadChoices(-1);
     }
 
     int NextConversationNum()
@@ -418,7 +418,7 @@ public class GameController : MonoBehaviour
 
         if (hasFound)
         {
-            LoadChoices();
+            LoadChoices(choiceNum);
         }
         else
         {
@@ -501,7 +501,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void LoadChoices()
+    void LoadChoices(int lastChoice)
     {
         Convo tempConvo = conversations[conversationNum];
         ConvoNode tempConvoNode = tempConvo.Nodes[conversationNodeNum];
@@ -511,6 +511,8 @@ public class GameController : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
+            choices[i].transform.parent.gameObject.SetActive(false);
+            
             if (
                 i <= tempChoices.Count - 1 &&
                 credits + tempConvoNode.InventoryChanges[i, 0] >= 0 &&
@@ -520,10 +522,11 @@ public class GameController : MonoBehaviour
             {
                 choices[i].transform.parent.gameObject.SetActive(true);
                 choices[i].text = CheckAndColourDialogue(tempChoices[i]);
-            }
-            else
-            {
-                choices[i].transform.parent.gameObject.SetActive(false);
+
+                if (lastChoice != i)
+                {
+                    choices[i].gameObject.GetComponentInParent<ButtonHover>().OffHover();
+                }
             }
         }
 
@@ -586,10 +589,9 @@ public class GameController : MonoBehaviour
 
     void LoadGameSummary()
     {
-        summaryParent = GameObject.FindGameObjectWithTag("Summary");
-
         string stats =
             ColourString("Conversations completed: ", StringColours.Green) + completedConversations + "/" + totalConversations + "\n" +
+            ColourString("Days completed: ", StringColours.Green) + dayPopupCount + "\n" +
             ColourString("Refugee standing: ", StringColours.Green) + opinions[0] + "\n" +
             ColourString("Empire standing: ", StringColours.Green) + opinions[1] + "\n" +
             ColourString("Resistance standing: ", StringColours.Green) + opinions[2] + "\n";
@@ -635,8 +637,9 @@ public class GameController : MonoBehaviour
             }
         }
 
-        summaryParent.transform.GetChild(1).gameObject.GetComponent<TMP_Text>().text = stats;
-        summaryParent.transform.GetChild(2).gameObject.GetComponent<TMP_Text>().text = achievements;
+        summaryParent = GameObject.FindGameObjectWithTag("Summary");
+        summaryParent.transform.GetChild(2).gameObject.GetComponent<TMP_Text>().text = stats;
+        summaryParent.transform.GetChild(3).gameObject.GetComponent<TMP_Text>().text = achievements;
     }
 
     enum StringColours { Yellow, Pink, Orange, Green };

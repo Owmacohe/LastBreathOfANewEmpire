@@ -31,12 +31,19 @@ public class SceneController : MonoBehaviour
 
     public void Load(string sceneName)
     {
-        SceneManager.LoadSceneAsync(sceneName);
-
         if (sceneName.Equals("Main Scene"))
         {
-            controller.playerName = FindObjectOfType<TMP_InputField>().text;
-            controller.StartTutorial();
+            TMP_InputField temp = FindObjectOfType<TMP_InputField>();
+
+            if (temp.text.Length > 0 && temp.text[0] != ' ' && temp.text[temp.text.Length - 1] != ' ')
+            {
+                SceneManager.LoadSceneAsync(sceneName);
+                controller.StartTutorial();   
+            }
+        }
+        else
+        {
+            SceneManager.LoadSceneAsync(sceneName);
         }
     }
 
