@@ -75,6 +75,19 @@
 - Added wiki for the game
 - Added a bunch of new NPC dialogues
 
+***Entry 11***
+- Lots of dialogue system tweaks and re-implementations
+- Started adding new questlines
+
+***Entry 12***
+- Finished new questlines
+- Optimized conversations switching
+- Added final summary scene
+
+***Entry 13***
+- Did build optimization
+- Small fixes everywhere
+
 ## Questions for playtesters - Round 1
 
 1. The game is meant to slowly feed the narrative to the player through these small dialogue interactions. From the limited amount that you’ve seen, do you think that a full-fledged narrative could be accomplished this way?
